@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/super_red</color>
+    <color name="colorPrimaryDark">@color/super_red</color>
+    <color name="colorPrimaryLight">@color/super_red2</color>
+    <color name="colorAccent">@color/super_red</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <!--oa-->
+
+    <color name="super_blue">#3685e8</color>
+    <color name="super_red">#b3373b</color>
+    <color name="super_red2">#c46466</color>
+    <color name="super_yellow">#ffe205</color>
+    <color name="super_orange">#f28e2d</color>
+    <color name="super_orange02">#fac886</color>
+    <color name="super_orange03">#fbefe2</color>
+    <color name="super_orange_coupon">#f4a65b</color>
+    <color name="loading">#e2e2e2</color>
+    <!--分割线-->
+    <color name="line1">#d9d9d9</color>
+    <!--背景灰-->
+    <color name="bg_gray">#f4f4f4</color>
+    <!--顶部栏底部栏-->
+    <color name="bg_gray02">#fafafa</color>
+    <!--主标题-->
+    <color name="gray01">#333</color>
+    <!--副标题-->
+    <color name="gray02">#666</color>
+    <!--底部标题-->
+    <color name="gray03">#7f7f7f</color>
+    <!--按钮变灰-->
+    <color name="gray04">#cccccc</color>
+    <!--第三方-->
+    <color name="divider">#ffd2d2d2</color>
+    <!---->
+    <color name="super_yellow02">#f1ece2</color>
+    <color name="super_yellow03">#9e8962</color>
+    <!--wave-->
+    <color name="wave_back">#b8ff9c9f</color>
+    <color name="wave_above">#3c933a3e</color>
+    <color name="wave_below">#28781b1e</color>
+
+</resources>

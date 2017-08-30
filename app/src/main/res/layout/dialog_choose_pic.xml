@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="#f5f7f7"
+              android:orientation="vertical"
+              android:paddingBottom="20dp"
+              android:paddingLeft="20dp"
+              android:paddingRight="20dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingTop="20dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
+    <!-- <Button
+         android:id="@+id/btn_take_photo"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="20dp"
+         android:background="@drawable/button_gray"
+         android:padding="10dp"
+         android:text="拍照"
+         android:textColor="#767676"
+         android:textSize="16sp"
+         android:visibility="gone" />-->
+    <Button
+        android:id="@+id/btn_pick_photo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+
+        android:padding="10dp"
+        android:stateListAnimator="@null"
+        android:text="从相册选择"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+    <!-- android:background="@drawable/shape_button_bg_green"-->
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dip"
+        android:layout_marginTop="15dip"
+
+        android:padding="10dp"
+        android:stateListAnimator="@null"
+        android:text="取消"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+    <!-- android:background="@drawable/shape_button_bg_green"-->
+</LinearLayout>

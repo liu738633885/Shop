@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="1dp"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <include layout="@layout/item_order_goods"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center"
+            android:text="评星"
+            android:textColor="@color/gray01"
+            android:textSize="14sp"/>
+
+        <!--<com.willy.ratingbar.ScaleRatingBar
+            android:id="@+id/scaleRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            rb:drawableEmpty="@drawable/ic_collection"
+            rb:drawableFilled="@drawable/ic_collection_check"
+            rb:starPadding="20"/>-->
+        <!--  <me.zhanghai.android.materialratingbar.MaterialRatingBar
+              android:id="@+id/materialRatingBar"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              style="@style/Widget.MaterialRatingBar.RatingBar" />-->
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:rating="1"
+            android:stepSize="1.0"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line1"/>
+
+    <EditText
+        android:id="@+id/edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="left|top"
+        android:hint="给个好评哟~"
+        android:minHeight="80dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/gray01"
+        android:textColorHint="@color/gray02"
+        android:textSize="14sp"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line1"/>
+
+    <com.yizhen.shop.widgets.MultiImageView2
+        android:id="@+id/multiImageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        />
+
+</LinearLayout>

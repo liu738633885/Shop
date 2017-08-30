@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--http环境  1.线上 2.测试-->
+    <integer name="HTTP_CONFIG">1</integer>
+    <!--蒲公英正式-->
+    <string name="PGYER_APPID">"69435237d2e9ea7ad199f80a67ccb6a9"</string>
+    <!--蒲公英测试-->
+    <!--<string name="PGYER_APPID">"12eae0083680cfb5f7954aeb7b6c1f14"</string>-->
+
+    <!--环信正式-->
+    <!--<string name="EASEMOB_APPKEY">easemob-demo#chatdemoui</string>-->
+    <!--环信测试-->
+    <string name="EASEMOB_APPKEY">1184170506115452#xietong</string>
+</resources>

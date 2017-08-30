@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<com.yizhen.shop.widgets.SwipeMenuLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:paddingBottom="1dp"
+    app:ios="true">
+-->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0.6dp"
+    android:background="@drawable/ripple_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <CheckBox
+        android:id="@+id/cb"
+        style="@style/checkbox"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="5dp"
+        />
+
+    <ImageView
+        android:id="@+id/imv"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_toRightOf="@id/cb"/>
+
+    <LinearLayout
+        android:id="@+id/ll_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="x"
+            android:textColor="@color/gray01"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/gray01"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_toLeftOf="@id/ll_num"
+        android:layout_toRightOf="@id/imv"
+        android:textColor="@color/gray01"
+        android:textSize="@dimen/midTextSize"/>
+
+
+    <TextView
+        android:id="@+id/tv_spec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_title"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="6dp"
+        android:layout_toLeftOf="@id/ll_num"
+        android:layout_toRightOf="@id/imv"
+        android:textColor="@color/gray02"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_spec2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="24dp"
+        android:layout_toRightOf="@id/imv"
+        android:textColor="@color/gray02"
+        android:textSize="@dimen/midTextSize"
+        android:visibility="invisible"/>
+
+    <com.yizhen.shop.widgets.AmountView
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:id="@+id/av"
+        android:layout_width="110dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/tv_spec2"
+        android:layout_marginBottom="18dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="22dp"
+        android:visibility="invisible"
+        app:btnTextSize="15sp"
+        app:btnWidth="35dp"
+        app:tvWidth="40dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_spec"
+        android:layout_marginBottom="18dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="13dp"
+        android:layout_toLeftOf="@id/av"
+        android:layout_toRightOf="@id/imv"
+        android:textColor="@color/gray01"
+        android:textSize="@dimen/midTextSize"/>
+</RelativeLayout>
+  <!--  以下都是侧滑菜单的内容依序排列
+<Button
+android:id="@+id/btnUnRead"
+android:layout_width="60dp"
+android:layout_height="match_parent"
+android:background="#ecd50a"
+android:clickable="true"
+android:text="标记未读"
+android:textColor="@color/white"/>
+
+<Button
+android:id="@+id/btnDelete"
+android:layout_width="60dp"
+android:layout_height="match_parent"
+android:background="@color/super_red"
+android:text="删除"
+android:textColor="@color/white"/>
+
+    </com.yizhen.shop.widgets.SwipeMenuLayout>-->

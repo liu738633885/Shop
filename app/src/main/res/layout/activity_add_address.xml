@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.yizhen.shop.user.AddAddressActivity">
+
+    <com.yizhen.shop.widgets.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_text="添加地址"
+        app:right_text="提交"/>
+
+    <EditText
+        android:id="@+id/edt_address_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:hint="姓名"
+        android:lines="1"
+        android:maxLength="10"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/gray01"
+        android:textColorHint="@color/gray02"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/line1"/>
+
+    <EditText
+        android:id="@+id/edt_address_phone"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:hint="手机号码"
+        android:inputType="phone"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/gray01"
+        android:textColorHint="@color/gray02"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/line1"/>
+
+    <TextView
+        android:id="@+id/tv_address_pcd"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="省份 城市 区县"
+        android:textColor="@color/gray01"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/line1"/>
+
+    <EditText
+        android:id="@+id/edt_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="详细地址 如街道 楼牌号等"
+        android:padding="15dp"
+        android:textColor="@color/gray01"
+        android:textColorHint="@color/gray02"
+        android:textSize="14sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/line1"/>
+
+    <CheckBox
+        android:id="@+id/cb_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="设置为默认"
+        android:textColor="@color/gray01"/>
+
+
+</LinearLayout>

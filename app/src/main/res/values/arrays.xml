@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bill_rise_type">
+        <item>电子普通发票</item>
+        <item>纸质普通发票</item>
+    </string-array>
+</resources>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_margin="10dp">
+
+    <yyydjk.com.library.CouponView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/couponView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/super_orange_coupon"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:cv_dash_line_color="@android:color/transparent"
+        app:cv_dash_line_height="0.8dp"
+        app:cv_dash_line_margin_bottom="5dp"
+        app:cv_dash_line_margin_left="5dp"
+        app:cv_dash_line_margin_right="90dp"
+        app:cv_dash_line_margin_top="5dp"
+        app:cv_is_dash_line_left="false"
+        app:cv_is_dash_line_right="true"
+        app:cv_is_semicircle_bottom="false"
+        app:cv_is_semicircle_left="true"
+        app:cv_is_semicircle_right="true"
+        app:cv_is_semicircle_top="false"
+        app:cv_semicircle_color="@android:color/white"
+        app:cv_semicircle_gap="4dp"
+        app:cv_semicircle_radius="4dp">
+    </yyydjk.com.library.CouponView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="¥ 30"
+            android:textColor="@color/white"
+            android:textSize="28sp"/>
+
+        <!--<View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>-->
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:text="有效期2017.02.02-2017.12.20"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/tv3"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:gravity="left"
+            android:text="满多少使用"
+            android:textColor="@color/white"
+            android:textSize="12sp"/>
+
+
+    </RelativeLayout>
+</FrameLayout>
+
+

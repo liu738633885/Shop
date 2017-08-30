@@ -1,0 +1,111 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+    defaultConfig {
+        applicationId "com.yizhen.shop"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 17082901
+        versionName "1.10"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a'
+            // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "f4d4b2c03afc1b9a65e934a4", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+    }
+    signingConfigs {
+        release {
+            storeFile file(RELEASE_STOREFILE)
+            storePassword RELEASE_STORE_PASSWORD
+            keyAlias RELEASE_KEY_ALIAS
+            keyPassword RELEASE_KEY_PASSWORD
+        }
+    }
+    buildTypes {
+        debug {
+            //移除无用的resource文件 gradle2.0以上不用写
+            //shrinkResources false
+            //Zipalign优化
+            zipAlignEnabled true
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+        release {
+            //移除无用的resource文件
+            //shrinkResources true
+            //Zipalign优化
+            zipAlignEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'me.yokeyword:indexablerecyclerview:1.2.3'
+    compile 'com.orhanobut:logger:1.15'
+    compile 'com.pgyersdk:sdk:2.5.6'
+    compile 'com.google.code.gson:gson:2.7'
+    compile 'com.alibaba:fastjson:1.2.32'
+    compile 'com.yanzhenjie.nohttp:nohttp:1.1.3'
+    compile 'com.yanzhenjie.nohttp:okhttp:1.1.3'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.25'
+    compile 'com.jude:rollviewpager:1.4.6'
+    compile 'com.bm.photoview:library:1.4.1'
+    compile 'me.iwf.photopicker:PhotoPicker:0.9.5@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    compile 'io.github.tonnyl:light:1.0.0'
+    compile 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.2-alpha-6'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
+    compile 'q.rorbin:VerticalTabLayout:1.2.4'
+    compile 'com.zhy:flowlayout-lib:1.0.3'
+    compile 'com.github.dongjunkun:CouponView:1.0.4'
+    compile 'cn.jiguang.sdk:jpush:3.0.8'
+    compile 'cn.jiguang.sdk:jcore:1.1.6'
+    testCompile 'junit:junit:4.12'
+}

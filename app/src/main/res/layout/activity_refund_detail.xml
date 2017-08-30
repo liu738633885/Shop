@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yizhen.shop.order.RefundDetailActivity">
+
+    <com.yizhen.shop.widgets.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_text="退款/售后详情"/>
+
+    <com.yizhen.shop.widgets.LewisSwipeRefreshLayout
+        android:id="@+id/swl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.yizhen.shop.widgets.LewisSwipeRefreshLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.6dp"
+        android:background="@color/line1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_spec"
+            android:minWidth="80dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="撤销申请"
+            android:textColor="@color/gray02"
+            android:textSize="14sp"/>
+
+        <View
+            android:layout_width="50dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/shape_spec"
+            android:minWidth="80dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="上传快递单号"
+            android:textColor="@color/gray02"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+</LinearLayout>

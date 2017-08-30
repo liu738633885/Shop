@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="1dp"
+    android:background="@drawable/ripple_bg"
+    android:paddingBottom="10dp"
+    android:paddingLeft="15dp"
+    android:paddingTop="10dp"
+    >
+
+    <ImageView
+        android:id="@+id/address_right"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="15dp"
+        android:src="@drawable/ic_right"
+        />
+
+    <TextView
+        android:id="@+id/tv_address_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="35dp"
+        android:text="收货人"
+        android:textColor="@color/gray01"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_address_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/address_right"
+        android:layout_toRightOf="@id/tv_address_name"
+        android:textColor="@color/gray01"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_address_default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_address_name"
+        android:text="默认"
+        android:textColor="@color/super_orange"
+        android:textSize="11sp"/>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_address_name"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@id/address_right"
+        android:layout_toRightOf="@id/tv_address_name"
+        android:textColor="@color/gray02"
+        android:textSize="12sp"/>
+
+</RelativeLayout>

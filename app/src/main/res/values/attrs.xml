@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyRadioButton">
+        <attr name="mydrawableSize" format="dimension"/>
+        <attr name="mydrawableTop" format="reference"/>
+        <attr name="mydrawableLeft" format="reference"/>
+        <attr name="mydrawableRight" format="reference"/>
+        <attr name="mydrawableBottom" format="reference"/>
+
+    </declare-styleable>
+    <declare-styleable name="TitleBar">
+        <attr name="mode" format="integer"/>
+        <attr name="left_text" format="string"/>
+        <attr name="left_img" format="reference"/>
+        <attr name="center_text" format="string"/>
+        <attr name="right_text" format="string"/>
+        <attr name="right_img" format="reference"/>
+    </declare-styleable>
+    <declare-styleable name="ChooseLayout">
+        <attr name="ChooseLayout_mode" format="integer"/>
+        <attr name="ChooseLayout_tv_text" format="string"/>
+        <attr name="ChooseLayout_tv_text2" format="string"/>
+        <attr name="ChooseLayout_tv_textColor" format="color"/>
+        <attr name="ChooseLayout_bottomlineColor" format="color"/>
+        <attr name="ChooseLayout_textSize" format="dimension"/>
+        <attr name="ChooseLayout_right_img" format="reference"/>
+
+    </declare-styleable>
+    <declare-styleable name="searchedit">
+        <attr name="imagewidth" format="dimension" />
+        <attr name="hintText" format="string" />
+        <attr name="textSize" format="dimension" />
+        <attr name="textColor" format="color" />
+    </declare-styleable>
+    <declare-styleable name="AmountView">
+        <!-- 左右2边+-按钮的宽度 -->
+        <attr name="btnWidth" format="dimension" />
+        <!-- 中间TextView的宽度 -->
+        <attr name="tvWidth" format="dimension" />
+        <!--<attr name="tvColor" format="color"/>-->
+        <attr name="tvTextSize" format="dimension"/>
+        <attr name="btnTextSize" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="SwipeMenuLayout">
+        <attr name="swipeEnable" format="boolean"/>
+        <attr name="ios" format="boolean"/>
+        <attr name="leftSwipe" format="boolean"/>
+    </declare-styleable>
+</resources>

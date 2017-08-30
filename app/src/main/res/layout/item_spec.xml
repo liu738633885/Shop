@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_margin="7dp"
+          android:minWidth="35dp"
+          android:gravity="center"
+          android:background="@drawable/selector_spec"
+          android:orientation="vertical"
+          android:paddingBottom="5dp"
+          android:paddingLeft="8dp"
+          android:paddingRight="8dp"
+          android:paddingTop="5dp"
+          android:text="撒打算"
+          android:textColor="@drawable/selector_spec_text"/>

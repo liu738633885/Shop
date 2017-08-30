@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="领取优惠卷"
+        android:textColor="@color/gray01"
+        android:textSize="16sp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <Button
+        android:layout_marginTop="40dp"
+        android:id="@+id/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/super_orange"
+        android:text="完成"
+        android:textColor="@color/white"
+        android:textSize="14sp"/>
+
+</LinearLayout>

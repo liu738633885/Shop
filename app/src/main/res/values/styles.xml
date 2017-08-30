@@ -1,0 +1,68 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/bg_gray</item>
+    </style>
+
+    <!-- <style name="AppSplash" parent="AppTheme">
+         <item name="android:windowBackground">@drawable/splash_layer</item>
+         <item name="android:windowFullscreen">true</item>
+         <item name="android:windowNoTitle">true</item>
+     </style>
+
+     <style name="Welcome" parent="AppTheme">
+         <item name="android:windowFullscreen">true</item>
+         <item name="android:windowNoTitle">true</item>
+     </style>-->
+    <style name="MyDialogStyleBottom">
+        <item name="android:windowAnimationStyle">@style/AnimBottom</item>
+        <item name="android:windowFrame">@null</item><!-- 边框 -->
+        <item name="android:layout_gravity">center</item>
+        <item name="android:windowIsFloating">false</item> <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <!-- 无标题<item name="android:windowNoTitle">true</item> -->
+        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">true</item><!--模糊-->
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+
+    <style name="LoadingDialog">
+        <!--parent="Theme.AppCompat.Light.Dialog"-->
+        <!--背景颜色及透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:layout_gravity">center</item>
+        <!--是否全屏-->
+        <item name="android:windowFullscreen">true</item>
+        <!--是否有标题 -->
+        <!-- <item name="android:windowNoTitle">true</item>-->
+        <!--是否浮现在activity之上-->
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <!--是否模糊-->
+        <!-- <item name="android:backgroundDimEnabled">false</item>-->
+        <!-- 边框 -->
+        <!-- <item name="android:windowFrame">@null</item>-->
+    </style>
+
+    <style name="checkbox">
+        <item name="android:padding">6dp</item>
+        <item name="android:drawableTop">@drawable/selector_checkbox</item>
+        <item name="android:button">@null</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+    </style>
+
+    <style name="myRatingBar">
+        <item name="android:minHeight">18dp</item>
+        <item name="android:maxHeight">18dp</item>
+    </style>
+
+</resources>

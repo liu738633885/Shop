@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp">
+
+            <ImageView
+                android:id="@+id/imv"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="6dp"
+                android:layout_marginTop="20dp"/>
+
+            <ImageView
+                android:id="@+id/cancel"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="12dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_close"/>
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:layout_toRightOf="@id/imv"
+                android:lines="1"
+                android:text="价格: ¥ 2599"
+                android:textColor="@color/super_red"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_spec"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_price"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@id/imv"
+                android:maxLines="2"
+                android:text="请选择规格属性"
+                android:textColor="@color/gray01"
+                android:textSize="12sp"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp"
+            android:text="数量"
+            android:textColor="@color/gray01"
+            android:textSize="14sp"/>
+
+        <com.yizhen.shop.widgets.AmountView
+            android:id="@+id/av"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="12dp"
+            app:btnTextSize="15sp"
+            app:btnWidth="35dp"
+            app:tvWidth="40dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_dialog_add_shopping_cart"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/super_red"
+                android:text="加入购物车"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+
+            <Button
+                android:id="@+id/btn_dialog_buy"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/super_orange"
+                android:text="立刻购买"
+                android:textColor="@color/white"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,22 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="gudieview_width">6dp</dimen>
+    <dimen name="gudieview_heigh">6dp</dimen>
+    <!--android 推荐字体大小-->
+    <dimen name="largeTextSize">18sp</dimen>
+    <dimen name="bigTextSize">17sp</dimen>
+    <dimen name="midTextSize">14sp</dimen>
+    <dimen name="smallTextSize">13sp</dimen>
+    <dimen name="littleTextSize">11sp</dimen>
+    <!--爱哪哪大小-->
+    <dimen name="titleBar">@dimen/largeTextSize</dimen>
+    <dimen name="bottomBar">12sp</dimen>
+
+    <!--边距-->
+    <dimen name="paddingHorizontal">10dp</dimen>
+    <dimen name="paddingVertical">10dp</dimen>
+    <dimen name="height_top_bar">43dp</dimen>
+</resources>
