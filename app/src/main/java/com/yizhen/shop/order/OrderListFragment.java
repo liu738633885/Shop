@@ -140,7 +140,7 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                     LinearLayout ll_button = layout.findViewById(R.id.ll_button);
                     ll_button.removeAllViews();
                     if (state != 5) {
-                        for (final Operation operation : goods.refund_operation) {
+                       /* for (final Operation operation : goods.refund_operation) {
                             Button button = (Button) LayoutInflater.from(getActivity()).inflate(R.layout.item_order_button, ll_button, false);
                             button.setText(operation.name);
                             button.setTextColor(Color.parseColor(operation.color));
@@ -161,7 +161,7 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                                 }
                             }
                             });
-                        }
+                        }*/
                     } else {
                         Button button = (Button) LayoutInflater.from(getActivity()).inflate(R.layout.item_order_button, ll_button, false);
                         button.setText("查看详情");
