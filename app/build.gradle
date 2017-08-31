@@ -7,8 +7,8 @@ android {
         applicationId "com.yizhen.shop"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 17082901
-        versionName "1.10"
+        versionCode 17083101
+        versionName "1.11"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {

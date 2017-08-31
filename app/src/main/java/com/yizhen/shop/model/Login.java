@@ -13,4 +13,6 @@ public class Login {
     public int point;
     public int member_level;
     public String level_name;
+    public String level_icon;
+    public String level_background;
 }

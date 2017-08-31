@@ -157,7 +157,7 @@ public class OrderDetailActivity extends BaseActivity {
                     public void onClick(View view) {
                         switch (operation.no) {
                             case "refund":
-                                RefundActivity.goTo(bContext, goods, order.order_id);
+                                RefundActivity.goTo(bContext, goods, order.order_id,order.shipping_status);
                                 break;
                             case "detail":
                                 RefundDetailActivity.goTo(bContext, order.order_id, goods.order_goods_id);

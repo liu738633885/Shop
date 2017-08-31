@@ -48,7 +48,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:layout_toLeftOf="@id/ll_num"
         android:layout_toRightOf="@id/imv"
         android:textColor="@color/gray01"
@@ -62,7 +64,8 @@
         android:layout_below="@id/tv_title"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="6dp"
+        android:maxLines="1"
+        android:layout_marginTop="5dp"
         android:layout_toLeftOf="@id/ll_num"
         android:layout_toRightOf="@id/imv"
         android:textColor="@color/gray02"
@@ -81,7 +84,6 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:textSize="14sp"
-        android:visibility="gone"
         />
 
     <Button
@@ -97,7 +99,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:textSize="14sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         />
 
 
@@ -109,7 +111,7 @@
         android:layout_marginBottom="18dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="10dp"
         android:layout_toLeftOf="@id/av"
         android:layout_toRightOf="@id/imv"
         android:textColor="@color/gray01"

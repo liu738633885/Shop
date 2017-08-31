@@ -28,6 +28,7 @@ public class Order implements Serializable {
     public String payment_type_name;
     public long create_time;
     public int give_point;
+    public int shipping_status;
     public String shipping_status_name;
     public String pay_money;
 }

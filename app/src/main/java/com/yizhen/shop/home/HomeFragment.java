@@ -12,9 +12,9 @@ import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseFragment;
 import com.yizhen.shop.category.CategoryGoodsFragment;
+import com.yizhen.shop.goods.GoodsListFragment;
 import com.yizhen.shop.goods.SearchActivity;
 import com.yizhen.shop.message.MessageHomeActivity;
-import com.yizhen.shop.message.MessageListActivity;
 import com.yizhen.shop.model.category.Category;
 import com.yizhen.shop.model.netmodel.NetBaseBean;
 import com.yizhen.shop.net.CallServer;
@@ -51,10 +51,14 @@ public class HomeFragment extends BaseFragment {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabStrs = new ArrayList<>();
         tabStrs.add("推荐");
+        tabStrs.add("开光直供");
+        tabStrs.add("新品首发");
         for (String s : tabStrs) {
             tabLayout.addTab(tabLayout.newTab().setText(s));
         }
         list_fragment.add(new HomeFragment1());
+        list_fragment.add(GoodsListFragment.newInstance(Constants.GET_OPENING_GOODS));
+        list_fragment.add(GoodsListFragment.newInstance(Constants.GET_NEW_GOODS));
 
         //list_fragment.add(CategoryGoodsFragment.newInstance(319));
         viewPager = view.findViewById(R.id.viewPager);

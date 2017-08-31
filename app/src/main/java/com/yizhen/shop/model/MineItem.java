@@ -16,4 +16,6 @@ public class MineItem {
         this.icon = icon;
         this.activity = activity;
     }
+    public MineItem() {
+    }
 }

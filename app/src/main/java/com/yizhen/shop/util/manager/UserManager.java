@@ -54,6 +54,8 @@ public class UserManager {
             SPUtils.getUserInstance().put(KEY_POINT, login.point);
             SPUtils.getUserInstance().put(KEY_LEVEL_NAME, login.level_name);
             SPUtils.getUserInstance().put(KEY_MEMBER_LEVEL, login.member_level);
+            SPUtils.getUserInstance().put(KEY_LEVEL_ICON, login.level_icon);
+            SPUtils.getUserInstance().put(KEY_LEVEL_BACKGROUND, login.level_background);
             return true;
         }
     }

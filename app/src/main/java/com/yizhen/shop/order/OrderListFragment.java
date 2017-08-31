@@ -87,7 +87,11 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        OrderDetailActivity.goTo(getActivity(), item.order_id);
+                        if (state == 5) {
+
+                        } else {
+                            OrderDetailActivity.goTo(getActivity(), item.order_id);
+                        }
                     }
                 });
                 LinearLayout ll_goods = helper.getView(R.id.ll_goods);
@@ -135,17 +139,18 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                     //退款按钮
                     LinearLayout ll_button = layout.findViewById(R.id.ll_button);
                     ll_button.removeAllViews();
-                    for (final Operation operation : goods.refund_operation) {
-                        Button button = (Button) LayoutInflater.from(getActivity()).inflate(R.layout.item_order_button, ll_button, false);
-                        button.setText(operation.name);
-                        button.setTextColor(Color.parseColor(operation.color));
-                        ll_button.addView(button);
-                        button.setOnClickListener(new View.OnClickListener() {
+                    if (state != 5) {
+                        for (final Operation operation : goods.refund_operation) {
+                            Button button = (Button) LayoutInflater.from(getActivity()).inflate(R.layout.item_order_button, ll_button, false);
+                            button.setText(operation.name);
+                            button.setTextColor(Color.parseColor(operation.color));
+                            ll_button.addView(button);
+                            button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 switch (operation.no) {
                                     case "refund":
-                                        RefundActivity.goTo(getActivity(), goods, item.order_id);
+                                        RefundActivity.goTo(getActivity(), goods, item.order_id, item.shipping_status);
                                         break;
                                     case "detail":
                                         RefundDetailActivity.goTo(getActivity(), item.order_id, goods.order_goods_id);
@@ -155,14 +160,28 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                                         break;
                                 }
                             }
+                            });
+                        }
+                    } else {
+                        Button button = (Button) LayoutInflater.from(getActivity()).inflate(R.layout.item_order_button, ll_button, false);
+                        button.setText("查看详情");
+                        button.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                RefundDetailActivity.goTo(getActivity(), item.order_id, goods.order_goods_id);
+                            }
                         });
+                        ll_button.addView(button);
                     }
                     //添加视图
                     ll_goods.addView(layout);
                 }
                 LinearLayout ll_operation = helper.getView(R.id.ll_operation);
                 ll_operation.removeAllViews();
-                for (final Operation operation : item.member_operation) {
+                if (state == 5) {
+
+                } else {
+                    for (final Operation operation : item.member_operation) {
                     Button button = (Button) LayoutInflater.from(getActivity()).inflate(R.layout.item_order_button, ll_operation, false);
                     button.setText(operation.name);
                     button.setTextColor(Color.parseColor(operation.color));
@@ -194,8 +213,8 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                             }
                         }
                     });
-
-                    ll_operation.addView(button);
+                        ll_operation.addView(button);
+                    }
                 }
             }
         };

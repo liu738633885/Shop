@@ -40,6 +40,7 @@ public class RefundActivity extends BaseActivity {
     private MultiImageView2 multiImageView;
     private ArrayList<String> imgList = new ArrayList<String>();
     private int order_id;
+    private int shipping_status;
     private Goods goods;
     private TextView tv_num, tv_title, tv_spec, tv_price;
     private ImageView imv;
@@ -55,18 +56,20 @@ public class RefundActivity extends BaseActivity {
         return R.layout.activity_refund;
     }
 
-    public static void goTo(Context context, Goods goods, int order_id) {
+    public static void goTo(Context context, Goods goods, int order_id, int shipping_status) {
         Intent intent = new Intent(context, RefundActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("goods", goods);
         intent.putExtras(bundle);
         intent.putExtra("order_id", order_id);
+        intent.putExtra("shipping_status", shipping_status);
         context.startActivity(intent);
     }
 
     protected void handleIntent(Intent intent) {
         goods = (Goods) intent.getSerializableExtra("goods");
         order_id = intent.getIntExtra("order_id", 0);
+        shipping_status = intent.getIntExtra("shipping_status", 0);
     }
 
     @Override
@@ -78,7 +81,7 @@ public class RefundActivity extends BaseActivity {
                 if (ll_content.getVisibility() == View.VISIBLE) {
                     ll_content.setVisibility(View.GONE);
                     ll_mode_1.setVisibility(View.VISIBLE);
-                    ll_mode_2.setVisibility(View.VISIBLE);
+                    ll_mode_2.setVisibility(shipping_status == 0 ? View.GONE : View.VISIBLE);
                     btn_ok.setVisibility(View.GONE);
                 } else {
                     finish();
@@ -99,6 +102,7 @@ public class RefundActivity extends BaseActivity {
         edt2 = (EditText) findViewById(R.id.edt2);
         ll_mode_1 = (LinearLayout) findViewById(R.id.ll_mode_1);
         ll_mode_2 = (LinearLayout) findViewById(R.id.ll_mode_2);
+        ll_mode_2.setVisibility(shipping_status == 0 ? View.GONE : View.VISIBLE);
         rg = (RadioGroup) findViewById(R.id.rg);
         ll_content = (LinearLayout) findViewById(R.id.ll_content);
         btn_ok = (Button) findViewById(R.id.btn_ok);
@@ -182,6 +186,17 @@ public class RefundActivity extends BaseActivity {
         request.add("refund_reason", edt1.getText().toString());
         if (TextUtils.isEmpty(edt2.getText().toString())) {
             T.showShort(this, "必须输入金额");
+            return;
+        }
+        try {
+            if (Double.parseDouble(edt2.getText().toString()) > Double.parseDouble(goods.price)) {
+                Toast("退款金额不能大于实际付款金额");
+                return;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast("输入金额不合法");
             return;
         }
         request.add("refund_require_money", edt2.getText().toString());

@@ -13,24 +13,47 @@
         android:src="@mipmap/profile1"
         />
 
-    <View
-        android:layout_gravity="bottom"
+  <!--  <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/white"
-        />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="bottom"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+    </LinearLayout>-->
+
+<!--android:background="@color/white"-->
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/smartLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlEnableLoadmore="true"
+        app:srlEnableLoadmore="false"
         app:srlEnablePureScrollMode="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <View
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
 
         <!-- <include layout="@layout/headview_mine"/>-->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </FrameLayout>

@@ -95,6 +95,8 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         list.add(new MineItem("客服", R.drawable.ic_kefu, null));
         list.add(new MineItem("意见反馈", R.drawable.ic_yijian, FeedbackActivity.class));
         list.add(new MineItem("设置", R.drawable.ic_shezhi, SettingActivity.class));
+        list.add(new MineItem());
+        list.add(new MineItem());
         adapter.setNewData(list);
     }
 
@@ -105,14 +107,15 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                 helper.setText(R.id.tv, item.name);
                 final ImageView imv = helper.getView(R.id.imv);
                 imv.setImageResource(item.icon);
-                helper.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (item.activity != null) {
+                if (item.activity != null) {
+                    helper.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
                             startActivity(new Intent(getActivity(), item.activity));
                         }
-                    }
-                });
+                    });
+                }
+
             }
         };
     }
