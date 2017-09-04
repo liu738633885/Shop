@@ -120,7 +120,10 @@
         </activity>
         <activity android:name=".goods.ConsultListActivity">
         </activity>
-        <activity android:name=".order.OrderListActivity">
+        <activity
+            android:name=".order.OrderListActivity"
+            android:launchMode="singleTask"
+            >
         </activity>
         <activity android:name=".order.OrderDetailActivity">
         </activity>
@@ -283,6 +286,21 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="f4d4b2c03afc1b9a65e934a4"/>
+        <!--===================================支付宝===================================-->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
 
         <activity android:name=".goods.TopicActivity">
         </activity>
@@ -297,6 +315,8 @@
         <activity android:name=".message.MessageHomeActivity">
         </activity>
         <activity android:name=".user.MyPointActivity">
+        </activity>
+        <activity android:name=".order.PayActivity">
         </activity>
     </application>
 

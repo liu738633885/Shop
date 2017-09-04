@@ -24,8 +24,8 @@ public class Constants {
         }
     }
 
-    public static final String API_URL_RELEASE = "http://api.hnido.com";
-    public static final String API_URL_DEBUG = "http://api.hnido.com";
+    public static final String API_URL_RELEASE = "http://api.putijiaye.com";
+    public static final String API_URL_DEBUG = "http://api.putijiaye.com";
     public static final String IMG_HEAD = API_URL_RELEASE + "/";
     public static final String ADMIN_ID = "admin";
     public static final String GOODS_DETAIL_WEB = "http://mobile.hnido.com/goods/content.html?goods_id=";
@@ -100,6 +100,7 @@ public class Constants {
     public static final String _BUY = getApiConfig() + "Buy/";
     public static final String PAYMENT_ORDER = _BUY + "payment_order";
     public static final String CREATE_ORDER = _BUY + "create_order";
+    public static final String PAY_ORDER = _BUY + "pay_order";
     /**
      * ====Order========
      */

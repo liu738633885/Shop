@@ -11,7 +11,6 @@ import android.support.v4.view.ViewPager;
 import com.orhanobut.logger.Logger;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseActivity;
-import com.yizhen.shop.base.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
 public class OrderListActivity extends BaseActivity {
     private String[] tabStrs = {"全部", "待付款", "待发货", "待收货", "待评价"};
     private TabLayout tabLayout;
-    private List<BaseFragment> list_fragment = new ArrayList<>();
+    private List<OrderListFragment> list_fragment = new ArrayList<>();
     private ViewPager viewPager;
     private FragmentStatePagerAdapter adapter;
     private int position;
@@ -33,6 +32,18 @@ public class OrderListActivity extends BaseActivity {
         Intent intent = new Intent(context, OrderListActivity.class);
         intent.putExtra("position", position);
         context.startActivity(intent);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        position = intent.getIntExtra("position", 0);
+        viewPager.setCurrentItem(position);
+        try {
+            list_fragment.get(position).onRefresh();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     //获取Intent

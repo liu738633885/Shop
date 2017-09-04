@@ -320,6 +320,7 @@ public class AddNewOrderActivity extends BaseActivity {
                 if (netBaseBean.isSuccess()) {
                     //Logger.e(netBaseBean.getBody());
                     OrderListActivity.goTo(bContext, 1);
+                    finish();
                 }
             }
 

@@ -298,7 +298,7 @@ public class OrderDetailActivity extends BaseActivity {
 
     //模拟付款
     private void pay(String out_trade_no) {
-        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.UNIFY_PAY);
+       /* NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.UNIFY_PAY);
         request.add("out_trade_no", out_trade_no);
         CallServer.getRequestInstance().add(bContext, 0x01, request, new HttpListenerCallback() {
             @Override
@@ -313,7 +313,8 @@ public class OrderDetailActivity extends BaseActivity {
             public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
 
             }
-        }, true, true);
+        }, true, true);*/
+        PayActivity.goTo(this, out_trade_no);
 
     }
 
