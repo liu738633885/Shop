@@ -106,13 +106,15 @@ public class OrderDetailActivity extends BaseActivity {
         tv_address_name.setText(order.receiver_name);
         tv_address_phone.setText(order.receiver_mobile);
         tv_address.setText(order.receiver_address);
+        tv_youhui.setText(order.coupon_name);
+        tv_yunfei.setText("¥ " + order.shipping_money);
         ll_goods.removeAllViews();
         for (final Goods goods : order.goods_list) {
             View layout = LayoutInflater.from(bContext).inflate(R.layout.item_order_goods, ll_goods, false);
             ((TextView) layout.findViewById(R.id.tv_title)).setText(goods.goods_name);
             ((TextView) layout.findViewById(R.id.tv_num)).setText(goods.num + "");
             ((TextView) layout.findViewById(R.id.tv_spec)).setText(goods.sku_name);
-            ((TextView) layout.findViewById(R.id.tv_price)).setText(goods.price);
+            ((TextView) layout.findViewById(R.id.tv_price)).setText("¥ " + goods.price);
             //Button button = layout.findViewById(R.id.av);
             TextView tv_refund = layout.findViewById(R.id.tv_refund);
             tv_refund.setVisibility(View.VISIBLE);//退款文本显示

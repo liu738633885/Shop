@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_gray"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    >
+
+    <com.yizhen.shop.widgets.TitleBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:center_text="关于"/>
+
+    <ImageView
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="60dp"
+        android:src="@mipmap/app_icon"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/app_name"
+        android:textColor="@color/gray01"
+        android:textSize="@dimen/bigTextSize"/>
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:text="软件许可及服务协议"
+            android:textColor="#005694"
+            android:textSize="@dimen/midTextSize"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="海南一真网络科技有限公司  版权所有"
+            android:textSize="@dimen/smallTextSize"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copyright © 2017 Yizhen.All Rights Reserved"
+            android:textSize="@dimen/smallTextSize"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -104,8 +104,8 @@ public class RefundDetailActivity extends BaseActivity implements LewisSwipeRefr
                     e.printStackTrace();
                 }
                 helper.setText(R.id.tv_refund_action, item.action);
-                helper.setVisible(R.id.refund_line, !TextUtils.isEmpty(item.refund_ext));
-                helper.setVisible(R.id.tv_refund_ext, !TextUtils.isEmpty(item.refund_ext));
+                helper.setGone(R.id.refund_line, !TextUtils.isEmpty(item.refund_ext));
+                helper.setGone(R.id.tv_refund_ext, !TextUtils.isEmpty(item.refund_ext));
                 helper.setText(R.id.tv_refund_ext, item.refund_ext);
                 //背景
                 LinearLayout ll_refund_content = helper.getView(R.id.ll_refund_content);

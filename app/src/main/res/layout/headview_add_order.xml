@@ -145,7 +145,6 @@
             android:id="@+id/tv_fapiao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="发票信息"
             android:textColor="@color/gray02"
             android:textSize="12sp"/>
 

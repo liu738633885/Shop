@@ -39,8 +39,8 @@ public class HomeBeanAdapter extends BaseQuickAdapter<Goods, BaseViewHolder> {
                         case "新品首发":
                             GoodsListActivity.goTo(mContext, "新品首发", Constants.GET_NEW_GOODS);
                             break;
-                        case "开光直供":
-                            GoodsListActivity.goTo(mContext, "开光直供", Constants.GET_OPENING_GOODS);
+                        case "精品推荐":
+                            GoodsListActivity.goTo(mContext, "精品推荐", Constants.GET_OPENING_GOODS);
                             break;
                     }
                 }

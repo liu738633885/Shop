@@ -71,7 +71,7 @@ public class MyConsultListActivity extends BaseActivity implements LewisSwipeRef
                 helper.setText(R.id.tv_spec, item.introduction);
                 helper.setText(R.id.tv_price, "¥ " + item.promotion_price);
                 //----
-                helper.setVisible(R.id.tv_consult_right, false);
+                helper.setGone(R.id.tv_consult_right, false);
                 helper.setText(R.id.tv_wen, item.consult_content);
                 if (!TextUtils.isEmpty(item.consult_reply)) {
                     helper.setText(R.id.tv_da, item.consult_reply);

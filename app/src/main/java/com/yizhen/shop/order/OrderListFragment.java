@@ -102,7 +102,7 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                     ((TextView) layout.findViewById(R.id.tv_title)).setText(goods.goods_name);
                     ((TextView) layout.findViewById(R.id.tv_num)).setText(goods.num + "");
                     ((TextView) layout.findViewById(R.id.tv_spec)).setText(goods.sku_name);
-                    ((TextView) layout.findViewById(R.id.tv_price)).setText(goods.price);
+                    ((TextView) layout.findViewById(R.id.tv_price)).setText("¥ "+goods.price);
                     ImageLoader.loadHome(getActivity(), goods.goods_picture, (ImageView) layout.findViewById(R.id.imv));
                     //退款文本
                     TextView tv_refund = layout.findViewById(R.id.tv_refund);

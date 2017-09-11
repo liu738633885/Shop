@@ -51,7 +51,7 @@ public class HomeFragment extends BaseFragment {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabStrs = new ArrayList<>();
         tabStrs.add("推荐");
-        tabStrs.add("开光直供");
+        tabStrs.add("精品推荐");
         tabStrs.add("新品首发");
         for (String s : tabStrs) {
             tabLayout.addTab(tabLayout.newTab().setText(s));

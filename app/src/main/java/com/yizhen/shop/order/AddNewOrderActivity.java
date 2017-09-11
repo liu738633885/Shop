@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -133,7 +134,7 @@ public class AddNewOrderActivity extends BaseActivity {
         adapter = new BaseQuickAdapter<Goods, BaseViewHolder>(R.layout.item_shopping_car_goods) {
             @Override
             protected void convert(BaseViewHolder helper, Goods item) {
-                helper.setVisible(R.id.cb, false);
+                helper.setGone(R.id.cb, false);
                 helper.setText(R.id.tv_title, item.goods_name);
                 helper.setText(R.id.tv_num, item.num + "");
                 helper.setText(R.id.tv_spec, item.sku_name);
@@ -193,6 +194,7 @@ public class AddNewOrderActivity extends BaseActivity {
 
     private void updatePriceUI() {
         tv_all_price.setText("¥ " + order.total_money);
+        tv_freight.setText("¥ " + order.express);
         if (chooseCoupon != null) {
             tv_all_price_bottom.setText("¥ " + (order.total_money - Double.parseDouble(chooseCoupon.money)));
         } else {
@@ -319,8 +321,16 @@ public class AddNewOrderActivity extends BaseActivity {
             public void onSucceed(int what, NetBaseBean netBaseBean) {
                 if (netBaseBean.isSuccess()) {
                     //Logger.e(netBaseBean.getBody());
-                    OrderListActivity.goTo(bContext, 1);
-                    finish();
+//                    OrderListActivity.goTo(bContext, 1);
+//                    finish();
+                    Order order = netBaseBean.parseObject(Order.class);
+                    if (!TextUtils.isEmpty(order.out_trade_no)) {
+                        PayActivity.goTo(bContext, order.out_trade_no);
+                        finish();
+                    } else {
+                        OrderListActivity.goTo(bContext, 1);
+                        finish();
+                    }
                 }
             }
 

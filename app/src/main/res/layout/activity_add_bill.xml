@@ -98,7 +98,16 @@
         android:layout_height="1dp"
         android:layout_marginLeft="15dp"
         android:background="@color/bg_gray"/>
-
+    <EditText
+        android:id="@+id/edt_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:hint="请输入个人或姓名"
+        android:padding="15dp"
+        android:textColor="@color/gray01"
+        android:textColorHint="@color/gray04"
+        android:textSize="15sp"/>
     <EditText
         android:id="@+id/edt_company_name"
         android:layout_width="match_parent"

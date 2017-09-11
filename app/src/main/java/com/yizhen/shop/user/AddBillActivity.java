@@ -31,7 +31,7 @@ import java.util.List;
 public class AddBillActivity extends BaseActivity {
     private Spinner spinner1, spinner2;
     private RadioButton rb1, rb2;
-    private EditText edt_company_name, edt_company_code, edt_phone, edt_email;
+    private EditText edt_username, edt_company_name, edt_company_code, edt_phone, edt_email;
     private List<String> bill_types;
     private TitleBar titleBar;
     private int mode = 0;//当保存后 mode=1  关闭页面
@@ -54,6 +54,7 @@ public class AddBillActivity extends BaseActivity {
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         rb1 = (RadioButton) findViewById(R.id.rb1);
         rb2 = (RadioButton) findViewById(R.id.rb2);
+        edt_username = (EditText) findViewById(R.id.edt_username);
         edt_company_name = (EditText) findViewById(R.id.edt_company_name);
         edt_company_code = (EditText) findViewById(R.id.edt_company_code);
         edt_phone = (EditText) findViewById(R.id.edt_phone);
@@ -62,9 +63,11 @@ public class AddBillActivity extends BaseActivity {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
                 if (i == R.id.rb1) {
+                    edt_username.setVisibility(View.VISIBLE);
                     edt_company_name.setVisibility(View.GONE);
                     edt_company_code.setVisibility(View.GONE);
                 } else if (i == R.id.rb2) {
+                    edt_username.setVisibility(View.GONE);
                     edt_company_name.setVisibility(View.VISIBLE);
                     edt_company_code.setVisibility(View.VISIBLE);
                 }
@@ -78,6 +81,7 @@ public class AddBillActivity extends BaseActivity {
         request.add("type", spinner1.getSelectedItemPosition() + 1);
         if (rb1.isChecked()) {
             request.add("bill_rise_type", 1);
+            request.add("username", edt_username.getText().toString());
         } else if (rb2.isChecked()) {
             request.add("bill_rise_type", 2);
             request.add("company_name", edt_company_name.getText().toString());
@@ -159,6 +163,9 @@ public class AddBillActivity extends BaseActivity {
             rb2.setChecked(true);
         } else {
             rb1.setChecked(true);
+        }
+        if (!TextUtils.isEmpty(bill.username)) {
+            edt_username.setText(bill.username);
         }
         if (!TextUtils.isEmpty(bill.company_name)) {
             edt_company_name.setText(bill.company_name);

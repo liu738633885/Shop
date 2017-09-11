@@ -10,10 +10,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.cache.DiskCache;
-import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseActivity;
-import com.yizhen.shop.base.WebViewActivity;
 import com.yizhen.shop.model.event.EventRefresh;
 import com.yizhen.shop.util.BitmapUtils;
 import com.yizhen.shop.util.FileUtil;
@@ -94,7 +92,8 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                 Toast("重置设置成功");
                 break;
             case R.id.ll_about:
-                WebViewActivity.goTo(this, Constants.WEB_ABOUT, "关于");
+                //WebViewActivity.goTo(this, Constants.WEB_ABOUT, "关于");
+                startActivity(new Intent(bContext, AppInfoActivity.class));
                 break;
         }
     }

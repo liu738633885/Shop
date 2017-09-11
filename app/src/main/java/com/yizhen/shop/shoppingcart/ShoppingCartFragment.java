@@ -44,6 +44,7 @@ import com.yizhen.shop.widgets.LewisSwipeRefreshLayout;
 
 import org.greenrobot.eventbus.Subscribe;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -66,6 +67,7 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
     private LewisSwipeRefreshLayout swl;
     private BaseQuickAdapter<Goods, BaseViewHolder> adapter2;
     private View loginHeadView;
+    private DecimalFormat df;
 
     @Override
     protected int getLayoutId() {
@@ -81,6 +83,7 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
         if (getActivity() instanceof MainActivity) {
             back.setVisibility(View.INVISIBLE);
         }
+        df = new DecimalFormat("######0.00");
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -314,7 +317,7 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
         } else {
             tv_all_num.setText("全选");
         }
-        tv_all_price.setText("¥ " + allPrice);
+        tv_all_price.setText("合计:¥ " + df.format(allPrice));
         btn_all.setEnabled(chooseNum > 0);
         cb_all.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override

@@ -56,7 +56,6 @@
             android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
             android:gravity="left"
-            android:text="¥ 30"
             android:textColor="@color/white"
             android:textSize="28sp"/>
 
@@ -73,7 +72,6 @@
             android:layout_marginRight="20dp"
             android:gravity="left"
             android:paddingBottom="10dp"
-            android:text="有效期2017.02.02-2017.12.20"
             android:textColor="@color/white"
             android:textSize="12sp"/>
 
@@ -85,7 +83,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:gravity="left"
-            android:text="满多少使用"
             android:textColor="@color/white"
             android:textSize="12sp"/>
 

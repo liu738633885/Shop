@@ -104,7 +104,7 @@ public class HomeFragment1 extends BaseFragment implements LewisSwipeRefreshLayo
                 if (netBaseBean.isSuccess()) {
                     Home home = netBaseBean.parseObject(Home.class);
                     List<Goods> goodsList = new ArrayList<Goods>();
-                    goodsList.add(new Goods(Home.TYPE_TITLE, "开光直供"));
+                    goodsList.add(new Goods(Home.TYPE_TITLE, "精品推荐"));
                     for (Goods goods : home.direct_goods_list) {
                         goods.type = Home.TYPE_GOODS_KAIGUANG;
                         goodsList.add(goods);

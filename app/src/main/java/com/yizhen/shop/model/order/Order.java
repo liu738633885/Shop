@@ -31,4 +31,7 @@ public class Order implements Serializable {
     public int shipping_status;
     public String shipping_status_name;
     public String pay_money;
+    public String express;
+    public String coupon_name;
+    public String shipping_money;
 }
