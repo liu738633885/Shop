@@ -3,6 +3,7 @@ package com.yizhen.shop.goods;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -79,7 +80,8 @@ public class GoodsDetailEvaluateFragment extends BaseFragment implements LewisSw
                     e.printStackTrace();
                 }
                 helper.setText(R.id.tv_comment_content, item.content);
-                helper.setText(R.id.tv_comment_spec, item.goods_name);
+                helper.setText(R.id.tv_comment_spec, item.sku_name);
+                helper.setGone(R.id.tv_comment_spec, !TextUtils.isEmpty(item.sku_name));
                 LinearLayout ll_comment_imgs = helper.getView(R.id.ll_comment_imgs);
                 ll_comment_imgs.removeAllViews();
                 if (item.image != null && item.image.size() > 0) {

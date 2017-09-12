@@ -35,6 +35,8 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+
 /**
  * Created by lewis on 2017/7/25.
  */
@@ -176,7 +178,14 @@ public class GoodsDetailFragment extends BaseFragment {
                 e.printStackTrace();
             }
             tv_comment_content.setText(goods.evaluate_info.content);
-            tv_comment_spec.setText(goods.evaluate_info.goods_name);
+            if( TextUtils.isEmpty(goods.evaluate_info.sku_name)){
+                tv_comment_spec.setVisibility(View.GONE);
+            }else {
+                tv_comment_spec.setVisibility(View.VISIBLE);
+                tv_comment_spec.setText(goods.evaluate_info.sku_name);
+            }
+
+
             if (goods.evaluate_info.image != null && goods.evaluate_info.image.size() > 0) {
                 ((View) ll_comment_imgs.getParent()).setVisibility(View.VISIBLE);
                 ll_comment_imgs.removeAllViews();

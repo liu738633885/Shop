@@ -11,6 +11,7 @@ public class Evaluate {
     public long addtime;
     public String member_name;
     public String goods_name;
+    public String sku_name;
     public String goods_price;
     public String goods_image;
     public String user_headimg;
