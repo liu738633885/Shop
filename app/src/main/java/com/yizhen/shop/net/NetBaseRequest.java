@@ -17,9 +17,9 @@ package com.yizhen.shop.net;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.orhanobut.logger.Logger;
 import com.yizhen.shop.model.netmodel.NetBaseBean;
 import com.yanzhenjie.nohttp.Headers;
-import com.yanzhenjie.nohttp.Logger;
 import com.yanzhenjie.nohttp.RequestMethod;
 import com.yanzhenjie.nohttp.rest.RestRequest;
 import com.yanzhenjie.nohttp.rest.StringRequest;

@@ -18,4 +18,10 @@
     <string name="error_unknow">未知错误。</string>
     <string name="error_response_code">服务器响应码%1$d</string>
     <string name="error_response_code_dex">服务器响应码%1$d，如果你们服务器在这种情况下也返回数据你可以处理。</string>
+    <string name="pay_success">支付成功！</string>
+    <string name="pay_cancel">取消支付！</string>
+    <string name="share_success">分享成功！</string>
+    <string name="share_cancel">取消分享！</string>
+    <string name="sharing">正在分享...</string>
+    <string name="pay_fail">支付失败</string>
 </resources>

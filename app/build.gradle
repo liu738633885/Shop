@@ -7,8 +7,8 @@ android {
         applicationId "com.yizhen.shop"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 17091101
-        versionName "1.13"
+        versionCode 17091601
+        versionName "1.0.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -107,5 +107,7 @@ dependencies {
     compile 'com.github.dongjunkun:CouponView:1.0.4'
     compile 'cn.jiguang.sdk:jpush:3.0.8'
     compile 'cn.jiguang.sdk:jcore:1.1.6'
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
     testCompile 'junit:junit:4.12'
+    compile files('libs/org.apache.http.legacy.jar')
 }

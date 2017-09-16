@@ -91,17 +91,20 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
             android:name=".user.LoginActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".user.SplashActivity">
+        <activity android:name=".user.SplashActivity"
+                  android:theme="@style/AppSplash"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name=".goods.GoodsDetailActivity">
         </activity>
@@ -300,6 +303,17 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden">
         </activity>
+        <!-- ===================================微信=================================== -->
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoDisplay"/>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.NoDisplay"/>
         <activity android:name=".goods.TopicActivity">
         </activity>
         <activity android:name=".goods.SearchActivity">

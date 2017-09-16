@@ -9,8 +9,8 @@
         <item name="android:windowBackground">@color/bg_gray</item>
     </style>
 
-    <!-- <style name="AppSplash" parent="AppTheme">
-         <item name="android:windowBackground">@drawable/splash_layer</item>
+     <style name="AppSplash" parent="AppTheme">
+         <item name="android:windowBackground">@mipmap/splash</item>
          <item name="android:windowFullscreen">true</item>
          <item name="android:windowNoTitle">true</item>
      </style>
@@ -18,7 +18,7 @@
      <style name="Welcome" parent="AppTheme">
          <item name="android:windowFullscreen">true</item>
          <item name="android:windowNoTitle">true</item>
-     </style>-->
+     </style>
     <style name="MyDialogStyleBottom">
         <item name="android:windowAnimationStyle">@style/AnimBottom</item>
         <item name="android:windowFrame">@null</item><!-- 边框 -->

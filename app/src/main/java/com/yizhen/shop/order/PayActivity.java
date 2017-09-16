@@ -11,16 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.tencent.mm.opensdk.modelpay.PayReq;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.aliPay.PayResult;
 import com.yizhen.shop.base.BaseActivity;
+import com.yizhen.shop.model.event.EventRefresh;
 import com.yizhen.shop.model.netmodel.NetBaseBean;
 import com.yizhen.shop.model.order.PayInfo;
 import com.yizhen.shop.net.CallServer;
 import com.yizhen.shop.net.HttpListenerCallback;
 import com.yizhen.shop.net.NetBaseRequest;
 import com.yizhen.shop.net.RequsetFactory;
+import com.yizhen.shop.util.T;
+
+import org.greenrobot.eventbus.Subscribe;
 
 public class PayActivity extends BaseActivity {
     private LinearLayout ll_zhifubao, ll_weixin;
@@ -54,8 +61,8 @@ public class PayActivity extends BaseActivity {
         ll_weixin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast("还没开启微信支付");
-                //payOk();
+                //Toast("还没开启微信支付");
+                callPay(1);
             }
         });
     }
@@ -72,7 +79,7 @@ public class PayActivity extends BaseActivity {
                     if (pay_type == 2) {
                         payZhiFuBao(payInfo.return_str);
                     } else {
-
+                        weChatPay(payInfo);
                     }
                 }
             }
@@ -158,5 +165,31 @@ public class PayActivity extends BaseActivity {
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
         payThread.start();
+    }
+
+    private void weChatPay(PayInfo post) {
+        if (TextUtils.isEmpty(post.appid) || TextUtils.isEmpty(post.noncestr) || TextUtils.isEmpty(post.partnerid) || TextUtils.isEmpty(post.prepayid)
+                || TextUtils.isEmpty(post.sign) || post.timestamp == 0) {
+            T.showShort(bContext, "数据有误，不能支付！！");
+            return;
+        }
+        IWXAPI msgApi = WXAPIFactory.createWXAPI(bContext, null);
+        msgApi.registerApp(post.appid);
+        PayReq req = new PayReq();
+        req.appId = post.appid;// 微信提供的APPID
+        req.partnerId = post.partnerid;
+        req.prepayId = post.prepayid;
+        req.packageValue = post.packages;
+        req.nonceStr = post.noncestr;
+        req.timeStamp = post.timestamp + "";
+        req.sign = post.sign;
+        msgApi.sendReq(req);
+    }
+
+    @Subscribe
+    public void onEventMainThread(EventRefresh refresh) {
+        if (refresh != null && refresh.getAction().equals(EventRefresh.PAY_OK)) {
+            payOk();
+        }
     }
 }
