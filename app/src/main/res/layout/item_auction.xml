@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_margin="3dp"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:padding="10dp">
+
+    <com.yizhen.shop.widgets.MyImageView
+        android:id="@+id/imv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_marginTop="3dp"
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/gray01"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1"
+            android:textColor="@color/gray01"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv1"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@id/tv2"
+            android:textColor="@color/gray02"
+            android:textSize="13sp"/>
+
+        <com.yizhen.shop.widgets.TimeTextView
+            android:id="@+id/tv4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv2"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/super_red"
+            android:textSize="12sp"/>
+    </RelativeLayout>
+
+</LinearLayout>

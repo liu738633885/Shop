@@ -29,6 +29,7 @@ public class Constants {
     public static final String IMG_HEAD = API_URL_RELEASE + "/";
     public static final String ADMIN_ID = "admin";
     public static final String GOODS_DETAIL_WEB = "http://mobile.hnido.com/goods/content.html?goods_id=";
+    public static final String AUCTION_DETAIL_WEB = "http://api.putijiaye.com/v1_0.Auction/get_goods_detail?goods_id=";
 
     /**
      * ====login=======
@@ -89,11 +90,20 @@ public class Constants {
      */
     public static final String _ADV = getApiConfig() + "Adv/";
     public static final String GET_ADV_LIST = _ADV + "get_Adv_list";
+    public static final String GET_AUCTION_ADV_LIST = _ADV + "get_Auction_Adv_list";
     /**
      * ====Coupon========
      */
     public static final String _COUPON = getApiConfig() + "Coupon/";
     public static final String COUPON_LIST = _COUPON + "coupon_list";
+    /**
+     * ====Auction========
+     */
+    public static final String _AUCTION = getApiConfig() + "Auction/";
+    public static final String GET_AUCTION_INDEX_LIST = _AUCTION + "get_index_list";
+    public static final String GET_AUCTION_THEME_LIST = _AUCTION + "get_theme_list";
+    public static final String GET_AUCTION_CATEGORY_GOODS = _AUCTION + "get_category_goods";
+    public static final String GET_AUCTION_GOODS_CATEGORY_LIST = _AUCTION + "get_goods_category_list";
     /**
      * ====Buy========
      */

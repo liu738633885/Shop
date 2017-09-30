@@ -91,15 +91,14 @@
             android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <activity android:name="com.soundcloud.android.crop.CropImageActivity"/>
         <activity android:name=".MainActivity">
-
         </activity>
         <activity
             android:name=".user.LoginActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize|stateHidden"/>
-        <activity android:name=".user.SplashActivity"
-                  android:theme="@style/AppSplash"
-            >
+        <activity
+            android:name=".user.SplashActivity"
+            android:theme="@style/AppSplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -342,6 +341,10 @@
         </receiver>
         -->
         <activity android:name=".user.AppInfoActivity">
+        </activity>
+        <activity android:name=".auction.AuctionListActivity">
+        </activity>
+        <activity android:name=".auction.AuctionCateActivity">
         </activity>
     </application>
 

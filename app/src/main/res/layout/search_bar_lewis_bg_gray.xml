@@ -15,7 +15,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/search_bg_gray"
-        android:drawableLeft="@drawable/ic_search"
+        android:drawableLeft="@drawable/ic_search15dp"
         android:drawablePadding="10dp"
         android:ellipsize="end"
         android:focusable="true"

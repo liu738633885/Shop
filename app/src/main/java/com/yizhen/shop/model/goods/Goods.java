@@ -33,6 +33,7 @@ public class Goods implements Serializable {
     public String pic_cover_big;
     public String pic_cover_small;
     public String goods_picture;
+    public String goods_img;
     public List<Spec> spec_list;
     public List<Sku> sku_list;
     public List<Image> img_list;
@@ -56,6 +57,12 @@ public class Goods implements Serializable {
     public int evaluate_scores;
     public String evaluate_content;
     public List<String> evaluate_image_list;
+    //拍卖
+    public String auction_price;
+    public String starting_price;
+    public long s_time;
+    public long e_time;
+    public int offers;
 
     public Goods() {
     }

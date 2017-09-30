@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.yizhen.shop.auction.AuctionHomeFragment;
 import com.yizhen.shop.base.BaseActivity;
 import com.yizhen.shop.category.CategoryFragment;
 import com.yizhen.shop.home.HomeFragment;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment;
     private CategoryFragment categoryFragment;
     private ShoppingCartFragment shoppingCartFragment;
+    private AuctionHomeFragment auctionHomeFragment;
     private MineFragment mineFragment;
     private int index;
     private int currentTabIndex;
@@ -68,13 +70,15 @@ public class MainActivity extends BaseActivity {
         mTabs[1] = (Button) findViewById(R.id.btn2);
         mTabs[2] = (Button) findViewById(R.id.btn3);
         mTabs[3] = (Button) findViewById(R.id.btn4);
+        mTabs[4] = (Button) findViewById(R.id.btn5);
         mTabs[0].setSelected(true);
         tv_shopping_car_num = (TextView) findViewById(R.id.tv_shopping_car_num);
         homeFragment = new HomeFragment();
+        auctionHomeFragment = new AuctionHomeFragment();
         categoryFragment = new CategoryFragment();
         shoppingCartFragment = new ShoppingCartFragment();
         mineFragment = new MineFragment();
-        fragments = new Fragment[]{homeFragment, categoryFragment, shoppingCartFragment, mineFragment};
+        fragments = new Fragment[]{homeFragment, auctionHomeFragment, categoryFragment, shoppingCartFragment, mineFragment};
         getSupportFragmentManager().beginTransaction().add(R.id.content, homeFragment).commit();
         //root.setFitsSystemWindows(true);
         requestPermissions();
@@ -129,11 +133,14 @@ public class MainActivity extends BaseActivity {
                 index = 2;
                 break;
             case R.id.btn4:
+                index = 3;
+                break;
+            case R.id.btn5:
                 if (!UserManager.isLogin()) {
                     startActivity(new Intent(bContext, LoginActivity.class));
                     return;
                 }
-                index = 3;
+                index = 4;
                 break;
         }
         clickBottomBar(index);

@@ -54,7 +54,6 @@
                 android:textSize="@dimen/bottomBar"/>
 
         </RelativeLayout>
-
         <RelativeLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -62,6 +61,28 @@
 
             <Button
                 android:id="@+id/btn2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/ripple_bg_nomask"
+                android:drawableTop="@drawable/main_auction"
+                android:onClick="onTabClicked"
+                android:paddingBottom="4dp"
+                android:paddingTop="6dp"
+                android:scaleType="matrix"
+                android:stateListAnimator="@null"
+                android:text="拍卖"
+                android:textColor="@drawable/button_text_color"
+                android:textSize="@dimen/bottomBar"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
@@ -83,7 +104,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/btn3"
+                android:id="@+id/btn4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
@@ -127,7 +148,7 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/btn4"
+                android:id="@+id/btn5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_centerHorizontal="true"
