@@ -1,11 +1,8 @@
 package com.yizhen.shop.auction;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -22,53 +19,38 @@ import com.yizhen.shop.net.CallServer;
 import com.yizhen.shop.net.HttpListenerCallback;
 import com.yizhen.shop.net.NetBaseRequest;
 import com.yizhen.shop.net.RequsetFactory;
+import com.yizhen.shop.util.DateUtils;
 import com.yizhen.shop.util.MyViewUtils;
 import com.yizhen.shop.util.imageloader.ImageLoader;
 import com.yizhen.shop.widgets.LewisSwipeRefreshLayout;
-import com.yizhen.shop.widgets.TimeTextView;
 import com.yizhen.shop.widgets.TitleBar;
 
 import java.util.List;
 
-public class AuctionListActivity extends BaseActivity implements LewisSwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
-    private TitleBar titleBar;
+/**
+ * Created by lewis on 2017/10/12.
+ */
+
+public class AuctionMarginListActivity extends BaseActivity implements LewisSwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
     private LewisSwipeRefreshLayout swl;
     private RecyclerView rv;
-    private int pagerNum = 1;
     private BaseQuickAdapter<Goods, BaseViewHolder> adapter;
-    private String title;
-    private int id;
-    private int mode;
+    private TitleBar titleBar;
+    private int pagerNum = 1;
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_auction_list;
-    }
-
-    public static void goTo(Context context, String title, int id, int mode) {
-        Intent intent = new Intent(context, AuctionListActivity.class);
-        intent.putExtra("title", title);
-        intent.putExtra("id", id);
-        intent.putExtra("mode", mode);
-        context.startActivity(intent);
-    }
-
-    protected void handleIntent(Intent intent) {
-        title = intent.getStringExtra("title");
-        id = intent.getIntExtra("id", 0);
-        mode = intent.getIntExtra("mode", 0);
+        return R.layout.layut_titlebar_swl_list;
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         titleBar = (TitleBar) findViewById(R.id.titleBar);
-        if (!TextUtils.isEmpty(title)) {
-            titleBar.setCenterText(title);
-        }
+        titleBar.setCenterText("我的保证金");
         swl = (LewisSwipeRefreshLayout) findViewById(R.id.swl);
         swl.setOnRefreshListener(this);
         rv = (RecyclerView) findViewById(R.id.rv);
-        rv.setLayoutManager(new GridLayoutManager(this, 2));
+        rv.setLayoutManager(new LinearLayoutManager(bContext));
         initAdapter();
         rv.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this, rv);
@@ -77,17 +59,33 @@ public class AuctionListActivity extends BaseActivity implements LewisSwipeRefre
     }
 
     private void initAdapter() {
-        adapter = new BaseQuickAdapter<Goods, BaseViewHolder>(R.layout.item_auction) {
+        adapter = new BaseQuickAdapter<Goods, BaseViewHolder>(R.layout.item_auction_baozheng) {
             @Override
             protected void convert(BaseViewHolder helper, final Goods item) {
                 helper.setText(R.id.tv1, item.goods_name);
-                helper.setText(R.id.tv2, "¥" + item.starting_price);
+                helper.setText(R.id.tv2, "保证金金额: " + item.margin_money + "元");
                 ImageLoader.loadHome(mContext, item.goods_img, (ImageView) helper.getView(R.id.imv));
-                helper.setText(R.id.tv3, item.offers > 0 ? item.offers + "次出价" : "起拍价");
-                TimeTextView tv4 = helper.getView(R.id.tv4);
-                //tv4.setTimes(item.e_time*1000);
-                tv4.setTimes(item.s_time, item.e_time);
-                // helper.setText(R.id.tv4, "距结束还有");
+                if (item.refund_type == 1) {
+                    helper.setText(R.id.tv3, "退还方式: 微信");
+                } else if (item.refund_type == 2) {
+                    helper.setText(R.id.tv3, "退还方式: 支付宝");
+                } else {
+                    helper.setText(R.id.tv3, "退还方式: ");
+                }
+                try {
+                    helper.setText(R.id.tv_time1, "缴纳时间: " + DateUtils.tenLongToString(item.pay_time, DateUtils.DB_DATA_FORMAT));
+                    helper.setGone(R.id.tv_time2, item.refund_time != 0);
+                    helper.setText(R.id.tv_time2, "释放时间: " + DateUtils.tenLongToString(item.refund_time, DateUtils.DB_DATA_FORMAT));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (item.pay_type == 1) {
+                    helper.setText(R.id.tv_pay_state, "支付方式: 微信");
+                } else if (item.pay_type == 2) {
+                    helper.setText(R.id.tv_pay_state, "支付方式: 支付宝");
+                } else {
+                    helper.setText(R.id.tv_pay_state, "支付方式: ");
+                }
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -100,23 +98,18 @@ public class AuctionListActivity extends BaseActivity implements LewisSwipeRefre
 
     @Override
     public void onLoadMoreRequested() {
-        get_category_goods(pagerNum);
+        get_auction_margin_list(pagerNum);
     }
 
     @Override
     public void onRefresh() {
-        get_category_goods(1);
+        get_auction_margin_list(1);
     }
 
-    private void get_category_goods(int num) {
-        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.GET_AUCTION_CATEGORY_GOODS);
+    private void get_auction_margin_list(int num) {
+        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.GET_AUCTION_MARGIN_LIST);
         request.add("pageno", num);
-        if (mode == 0) {
-            request.add("category_id", id);
-        } else if (mode == 1) {
-            request.add("theme_id", id);
-        }
-        CallServer.getRequestInstance().add(bContext, num, request, new HttpListenerCallback() {
+        CallServer.getRequestInstance().add(this, num, request, new HttpListenerCallback() {
             @Override
             public void onSucceed(int what, NetBaseBean netBaseBean) {
                 if (netBaseBean.isSuccess()) {
@@ -133,4 +126,5 @@ public class AuctionListActivity extends BaseActivity implements LewisSwipeRefre
             }
         }, swl, "");
     }
+
 }

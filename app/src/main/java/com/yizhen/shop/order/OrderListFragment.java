@@ -202,7 +202,8 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                                     take_delivery(item.order_id);
                                     break;
                                 case "remind"://提醒发货
-                                    T.showShort(getActivity(), "没有接口");
+                                    //T.showShort(getActivity(), "没有接口");
+                                    remind_delivery(item.order_id);
                                     break;
                                 case "evaluate"://去评价
                                     AddEvaluateActivity.goTo(getActivity(), item);
@@ -222,6 +223,21 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
         adapter.setOnLoadMoreListener(this, rv);
     }
 
+    private void remind_delivery(int order_id) {
+        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.REMIND_DELIVERY);
+        request.add("order_id", order_id);
+        CallServer.getRequestInstance().add(getActivity(), 0x01, request, new HttpListenerCallback() {
+            @Override
+            public void onSucceed(int what, NetBaseBean netBaseBean) {
+                T.showShort(getActivity(), netBaseBean.getMessage());
+            }
+
+            @Override
+            public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+
+            }
+        }, true, true);
+    }
     //关闭订单
     private void close(int order_id) {
         NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.ORDER_CLOSE);

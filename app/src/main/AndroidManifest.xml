@@ -346,6 +346,12 @@
         </activity>
         <activity android:name=".auction.AuctionCateActivity">
         </activity>
+        <activity android:name=".auction.MyAuctionHomeActivity">
+        </activity>
+        <activity android:name=".auction.AuctionIngListActivity">
+        </activity>
+        <activity android:name=".auction.AuctionMarginListActivity">
+        </activity>
     </application>
 
 </manifest>

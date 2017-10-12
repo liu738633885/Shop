@@ -210,7 +210,8 @@ public class OrderDetailActivity extends BaseActivity {
                             take_delivery(order.order_id);
                             break;
                         case "remind"://提醒发货
-                            T.showShort(bContext, "没有接口");
+                            //T.showShort(bContext, "没有接口");
+                            remind_delivery(order.order_id);
                             break;
                         case "evaluate"://去评价
                             AddEvaluateActivity.goTo(bContext, order);
@@ -226,6 +227,22 @@ public class OrderDetailActivity extends BaseActivity {
             }
             ll_operation.addView(button);
         }
+    }
+
+    private void remind_delivery(int order_id) {
+        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.REMIND_DELIVERY);
+        request.add("order_id", order_id);
+        CallServer.getRequestInstance().add(bContext, 0x01, request, new HttpListenerCallback() {
+            @Override
+            public void onSucceed(int what, NetBaseBean netBaseBean) {
+                T.showShort(bContext, netBaseBean.getMessage());
+            }
+
+            @Override
+            public void onFailed(int what, String url, Object tag, Exception exception, int responseCode, long networkMillis) {
+
+            }
+        }, true, true);
     }
 
     //关闭订单

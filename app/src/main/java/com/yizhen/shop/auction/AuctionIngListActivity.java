@@ -1,13 +1,12 @@
 package com.yizhen.shop.auction;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -30,45 +29,26 @@ import com.yizhen.shop.widgets.TitleBar;
 
 import java.util.List;
 
-public class AuctionListActivity extends BaseActivity implements LewisSwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
-    private TitleBar titleBar;
+public class AuctionIngListActivity extends BaseActivity implements LewisSwipeRefreshLayout.OnRefreshListener, BaseQuickAdapter.RequestLoadMoreListener {
     private LewisSwipeRefreshLayout swl;
     private RecyclerView rv;
-    private int pagerNum = 1;
     private BaseQuickAdapter<Goods, BaseViewHolder> adapter;
-    private String title;
-    private int id;
-    private int mode;
+    private TitleBar titleBar;
+    private int pagerNum = 1;
 
     @Override
     protected int getContentViewId() {
-        return R.layout.activity_auction_list;
-    }
-
-    public static void goTo(Context context, String title, int id, int mode) {
-        Intent intent = new Intent(context, AuctionListActivity.class);
-        intent.putExtra("title", title);
-        intent.putExtra("id", id);
-        intent.putExtra("mode", mode);
-        context.startActivity(intent);
-    }
-
-    protected void handleIntent(Intent intent) {
-        title = intent.getStringExtra("title");
-        id = intent.getIntExtra("id", 0);
-        mode = intent.getIntExtra("mode", 0);
+        return R.layout.layut_titlebar_swl_list;
     }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         titleBar = (TitleBar) findViewById(R.id.titleBar);
-        if (!TextUtils.isEmpty(title)) {
-            titleBar.setCenterText(title);
-        }
+        titleBar.setCenterText("我的参拍");
         swl = (LewisSwipeRefreshLayout) findViewById(R.id.swl);
         swl.setOnRefreshListener(this);
         rv = (RecyclerView) findViewById(R.id.rv);
-        rv.setLayoutManager(new GridLayoutManager(this, 2));
+        rv.setLayoutManager(new LinearLayoutManager(bContext));
         initAdapter();
         rv.setAdapter(adapter);
         adapter.setOnLoadMoreListener(this, rv);
@@ -77,13 +57,13 @@ public class AuctionListActivity extends BaseActivity implements LewisSwipeRefre
     }
 
     private void initAdapter() {
-        adapter = new BaseQuickAdapter<Goods, BaseViewHolder>(R.layout.item_auction) {
+        adapter = new BaseQuickAdapter<Goods, BaseViewHolder>(R.layout.item_auction_match) {
             @Override
             protected void convert(BaseViewHolder helper, final Goods item) {
                 helper.setText(R.id.tv1, item.goods_name);
-                helper.setText(R.id.tv2, "¥" + item.starting_price);
+                helper.setText(R.id.tv2, "当前 ¥ " + item.auction_price);
                 ImageLoader.loadHome(mContext, item.goods_img, (ImageView) helper.getView(R.id.imv));
-                helper.setText(R.id.tv3, item.offers > 0 ? item.offers + "次出价" : "起拍价");
+                helper.setText(R.id.tv3, item.offers + "次出价");
                 TimeTextView tv4 = helper.getView(R.id.tv4);
                 //tv4.setTimes(item.e_time*1000);
                 tv4.setTimes(item.s_time, item.e_time);
@@ -94,29 +74,42 @@ public class AuctionListActivity extends BaseActivity implements LewisSwipeRefre
                         WebViewActivity.goToWithLogIn(mContext, Constants.AUCTION_DETAIL_WEB + item.goods_id, "拍卖详情");
                     }
                 });
+                TextView tv_state = helper.getView(R.id.tv_state);
+                switch (item.status) {
+                    case 1:
+                        tv_state.setVisibility(View.VISIBLE);
+                        tv_state.setText("进行中");
+                        tv_state.setTextColor(ContextCompat.getColor(bContext, R.color.super_red));
+                        break;
+                    case 2:
+                        tv_state.setVisibility(View.VISIBLE);
+                        tv_state.setText("已出局");
+                        tv_state.setTextColor(ContextCompat.getColor(bContext, R.color.gray03));
+                        break;
+                    case 3:
+                        tv_state.setVisibility(View.VISIBLE);
+                        tv_state.setText("已获拍");
+                        tv_state.setTextColor(ContextCompat.getColor(bContext, R.color.super_red));
+                        break;
+                }
             }
         };
     }
 
     @Override
     public void onLoadMoreRequested() {
-        get_category_goods(pagerNum);
+        get_auction_ing(pagerNum);
     }
 
     @Override
     public void onRefresh() {
-        get_category_goods(1);
+        get_auction_ing(1);
     }
 
-    private void get_category_goods(int num) {
-        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.GET_AUCTION_CATEGORY_GOODS);
+    private void get_auction_ing(int num) {
+        NetBaseRequest request = RequsetFactory.creatBaseRequest(Constants.GET_AUCTION_ING);
         request.add("pageno", num);
-        if (mode == 0) {
-            request.add("category_id", id);
-        } else if (mode == 1) {
-            request.add("theme_id", id);
-        }
-        CallServer.getRequestInstance().add(bContext, num, request, new HttpListenerCallback() {
+        CallServer.getRequestInstance().add(this, num, request, new HttpListenerCallback() {
             @Override
             public void onSucceed(int what, NetBaseBean netBaseBean) {
                 if (netBaseBean.isSuccess()) {
@@ -133,4 +126,6 @@ public class AuctionListActivity extends BaseActivity implements LewisSwipeRefre
             }
         }, swl, "");
     }
+
+
 }

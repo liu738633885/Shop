@@ -1,8 +1,7 @@
 package com.yizhen.shop.auction;
 
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -150,9 +149,20 @@ public class AuctionCateActivity extends BaseActivity {
                         map = new LinkedHashMap<Integer, Category>();
                         for (Category category : list) {
                             if (category.level == 1) {
+                                if (map.get(category.category_id) != null && map.get(category.category_id).childs != null && map.get(category.category_id).childs.size() > 0) {
+                                    category.childs.addAll(map.get(category.category_id).childs);
+                                }
                                 map.put(category.category_id, category);
                             } else {
-                                map.get(category.pid).childs.add(category);
+                                try {
+                                    if (map.get(category.pid) == null) {
+                                        map.put(category.pid, new Category());
+                                    }
+                                    map.get(category.pid).childs.add(category);
+                                } catch (Exception e) {
+
+                                    e.printStackTrace();
+                                }
                             }
                             Logger.e(map.toString());
                         }

@@ -3,9 +3,10 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:layout_marginTop="1dp"
+              android:padding="15dp"
               android:background="@color/white"
               android:orientation="horizontal"
-              android:padding="15dp">
+    >
 
     <ImageView
         android:id="@+id/imv"
@@ -19,6 +20,19 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_state"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:padding="3dp"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/tv_state"
             android:id="@+id/tv1"
             android:ellipsize="end"
             android:layout_width="match_parent"

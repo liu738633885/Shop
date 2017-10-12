@@ -62,7 +62,7 @@ public class AuctionHomeBeanAdapter extends BaseQuickAdapter<Object, BaseViewHol
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        WebViewActivity.goTo(mContext, Constants.AUCTION_DETAIL_WEB + item.goods_id, "拍卖详情");
+                        WebViewActivity.goToWithLogIn(mContext, Constants.AUCTION_DETAIL_WEB + item.goods_id, "拍卖详情");
                     }
                 });
             } else if (item.type == Home.TYPE_AUCTION_WRAP) {
@@ -77,7 +77,7 @@ public class AuctionHomeBeanAdapter extends BaseQuickAdapter<Object, BaseViewHol
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        WebViewActivity.goTo(mContext, Constants.AUCTION_DETAIL_WEB + item.goods_id, "拍卖详情");
+                        WebViewActivity.goToWithLogIn(mContext, Constants.AUCTION_DETAIL_WEB + item.goods_id, "拍卖详情");
                     }
                 });
             }

@@ -66,6 +66,8 @@ public class Constants {
     public static final String SAVE_BILL = _USER + "save_bill";
     public static final String UPDATE_USER_PASSWORD = _USER + "update_user_password";
     public static final String ADD_FEEDBACK = _USER + "add_feedback";
+    public static final String GET_AUCTION_ING = _USER + "get_auction_ing";
+    public static final String GET_AUCTION_MARGIN_LIST = _USER + "get_auction_margin_list";
     /**
      * ====GOODS========
      */
@@ -125,6 +127,7 @@ public class Constants {
     public static final String GET_REFUND_DETAIL = _ORDER + "get_refund_detail";
     public static final String CANCEL_REFUND_APPLY = _ORDER + "cancel_refund_apply";
     public static final String ADD_REFUND_EXPRESS = _ORDER + "add_refund_express";
+    public static final String REMIND_DELIVERY = _ORDER + "remind_delivery";
     /**
      * ====CART========
      */

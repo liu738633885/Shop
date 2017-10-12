@@ -7,10 +7,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -18,18 +21,28 @@ import android.webkit.WebViewClient;
 
 import com.orhanobut.logger.Logger;
 import com.yizhen.shop.R;
+import com.yizhen.shop.model.event.EventRefresh;
+import com.yizhen.shop.order.PayActivity;
+import com.yizhen.shop.util.manager.UserManager;
 import com.yizhen.shop.widgets.LewisSwipeRefreshLayout;
 import com.yizhen.shop.widgets.TitleBar;
 
+import org.greenrobot.eventbus.Subscribe;
 
-public class WebViewActivity extends BaseActivity implements View.OnClickListener {
+import java.io.File;
+import java.util.ArrayList;
+
+import me.iwf.photopicker.PhotoPicker;
+
+
+public class WebViewActivity extends BaseActivity {
     private TitleBar titleBar;
     private LewisSwipeRefreshLayout swl;
     private WebView webView;
     private String TAG = WebViewActivity.class.getSimpleName();
     private String title, url;
     private boolean share;
-
+    private Handler mHandler = new Handler();
 
     @Override
     protected int getContentViewId() {
@@ -41,6 +54,13 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         Intent intent = new Intent(context, WebViewActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("url", url);
+        context.startActivity(intent);
+    }
+
+    public static void goToWithLogIn(Context context, String url, String title) {
+        Intent intent = new Intent(context, WebViewActivity.class);
+        intent.putExtra("title", title);
+        intent.putExtra("url", url + "&user_id=" + UserManager.getId() + "&token=" + UserManager.getToken());
         context.startActivity(intent);
     }
 
@@ -89,6 +109,7 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         });
         setWebView();
         webView.loadUrl(url);
+        //webView.loadUrl("file:///android_asset/javascript.html");
         Logger.d(url);
     }
 
@@ -134,11 +155,13 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         webSetting.setCacheMode(webSetting.LOAD_DEFAULT);// 设置缓存
         webView.setSaveEnabled(false);
 
+
         //https 问题
         webSetting.setJavaScriptEnabled(true);
         webSetting.setDomStorageEnabled(true);
         webSetting.setAllowFileAccess(true);
         webSetting.setAppCacheEnabled(true);
+        webView.addJavascriptInterface(new MyJavaScriptInterface(), "putijiaye");
        /* try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                 webSetting.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
@@ -168,6 +191,8 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
         super.onDestroy();
     }
 
+    private ValueCallback<Uri[]> valueCallbacks;
+    private ValueCallback<Uri> valueCallback;
     private final WebChromeClient defaultWebChromeClient = new WebChromeClient() {
         public final static String W_TAG = "WebChromeClient";
 
@@ -182,8 +207,71 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
             Log.i(W_TAG, "onProgressChanged newProgress = " + newProgress);
         }
 
+        /* //Android 3.0 以下
+         public void openFileChooser(ValueCallback<Uri> valueCallback) {
+             mUploadMessage = valueCallback;
+             selectImage();//就是上面
+         }
+         // Android 3~4.1
+         public void openFileChooser(ValueCallback valueCallback, String acceptType) {
+             mUploadMessage = valueCallback;
+             selectImage();
+         }*/
+
+        // Android  4.1以上
+        public void openFileChooser(ValueCallback<Uri> filePathCallback, String acceptType, String capture) {
+            valueCallback = filePathCallback;
+            choosePic();
+        }
+
+        // Android 5.0以上
+        @Override
+        public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback,
+                                         WebChromeClient.FileChooserParams fileChooserParams) {
+           /* mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast("选择了照片");
+                }
+            });*/
+            choosePic();
+            valueCallbacks = filePathCallback;
+            return true;
+        }
 
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_OK) {
+            return;
+        }
+        if (requestCode == PhotoPicker.REQUEST_CODE) {
+            if (data != null) {
+                ArrayList<String> photos =
+                        data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+                Uri sourceUri = Uri.fromFile(new File(photos.get(0)));
+                if (valueCallback != null) {
+                    Uri[] uris = {sourceUri};
+                    valueCallbacks.onReceiveValue(uris);
+                }
+                if (valueCallback != null) {
+                    valueCallback.onReceiveValue(sourceUri);
+                }
+
+            }
+        }
+    }
+
+    private void choosePic() {
+        PhotoPicker.builder()
+                .setPhotoCount(1)
+                .setShowCamera(true)
+                .setShowGif(false)
+                .setPreviewEnabled(true)
+                .start(WebViewActivity.this, PhotoPicker.REQUEST_CODE);
+    }
 
     public class MyWebViewClient extends WebViewClient {
         private final static String TAG = "MyWebViewClient";
@@ -222,10 +310,43 @@ public class WebViewActivity extends BaseActivity implements View.OnClickListene
 
     }
 
-    @Override
-    public void onClick(View view) {
 
+    final class MyJavaScriptInterface {
+
+        MyJavaScriptInterface() {
+        }
+
+        /**
+         * This is not called on the UI thread. Post a runnable to invoke
+         * loadUrl on the UI thread.
+         */
+        @JavascriptInterface
+        public void Jpay(final String pay_sn) {
+            mHandler.post(new Runnable() {
+                public void run() {
+                    //mWebView.loadUrl("javascript:wave()");
+                    //Toast("order_no:" + pay_sn);
+                    PayActivity.goTo(bContext, pay_sn, 1);
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void hello(final String order_no) {
+            mHandler.post(new Runnable() {
+                public void run() {
+                    //mWebView.loadUrl("javascript:wave()");
+                    Toast("order_no:" + order_no);
+                }
+            });
+        }
     }
 
+    @Subscribe
+    public void onEventMainThread(EventRefresh refresh) {
+        if (refresh != null && refresh.getAction().equals(EventRefresh.PAY_BACK)) {
+            webView.loadUrl(url);
+        }
+    }
 
 }

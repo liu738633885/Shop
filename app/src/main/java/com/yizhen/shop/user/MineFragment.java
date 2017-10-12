@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +15,9 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.yizhen.shop.R;
+import com.yizhen.shop.auction.MyAuctionHomeActivity;
 import com.yizhen.shop.base.BaseFragment;
+import com.yizhen.shop.base.WebViewActivity;
 import com.yizhen.shop.model.MineItem;
 import com.yizhen.shop.order.MyRefundListActivity;
 import com.yizhen.shop.order.OrderListActivity;
@@ -84,7 +87,7 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
         //橙色 FFf6b357
         //黄色 f8b851
         //蓝色 #5d99e0
-        list.add(new MineItem("我的拍卖", R.drawable.ic_paimai, null));
+        list.add(new MineItem("我的拍卖", R.drawable.ic_paimai, MyAuctionHomeActivity.class));
         list.add(new MineItem("优惠券", R.drawable.ic_youhuijuan, MyCouponListActivity.class));
         list.add(new MineItem("积分", R.drawable.ic_jifen, MyPointActivity.class));
         //list.add(new MineItem("邀请好友", R.drawable.ic_yaoqing, null));
@@ -112,6 +115,14 @@ public class MineFragment extends BaseFragment implements View.OnClickListener {
                         @Override
                         public void onClick(View view) {
                             startActivity(new Intent(getActivity(), item.activity));
+                        }
+                    });
+                }
+                if(!TextUtils.isEmpty(item.name)&&item.name.equals("客服")){
+                    helper.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            WebViewActivity.goTo(getActivity(),"https://static.meiqia.com/dist/standalone.html?_=t&eid=80425","客服");
                         }
                     });
                 }

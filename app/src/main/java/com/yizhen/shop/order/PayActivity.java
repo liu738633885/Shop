@@ -27,11 +27,13 @@ import com.yizhen.shop.net.NetBaseRequest;
 import com.yizhen.shop.net.RequsetFactory;
 import com.yizhen.shop.util.T;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 public class PayActivity extends BaseActivity {
     private LinearLayout ll_zhifubao, ll_weixin;
     private String no;
+    private int backmode;
 
     @Override
     protected int getContentViewId() {
@@ -44,8 +46,16 @@ public class PayActivity extends BaseActivity {
         context.startActivity(intent);
     }
 
+    public static void goTo(Context context, String no, int backmode) {
+        Intent intent = new Intent(context, PayActivity.class);
+        intent.putExtra("no", no);
+        intent.putExtra("backmode", backmode);
+        context.startActivity(intent);
+    }
+
     protected void handleIntent(Intent intent) {
         no = intent.getStringExtra("no");
+        backmode = intent.getIntExtra("backmode", 0);
     }
 
     @Override
@@ -138,7 +148,12 @@ public class PayActivity extends BaseActivity {
     };
 
     private void payOk() {
-        OrderListActivity.goTo(bContext, 2);
+        if (backmode == 0) {
+            //默认
+            OrderListActivity.goTo(bContext, 2);
+        } else {
+            EventBus.getDefault().post(new EventRefresh(EventRefresh.PAY_BACK));
+        }
         finish();
     }
 

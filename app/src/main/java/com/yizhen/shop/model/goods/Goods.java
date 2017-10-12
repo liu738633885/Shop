@@ -63,6 +63,13 @@ public class Goods implements Serializable {
     public long s_time;
     public long e_time;
     public int offers;
+    public int status;//1进行中  2已出局 3已获拍
+    public int margin_id;
+    public String margin_money;
+    public int pay_type;// 支付类型 1微信 2支付宝
+    public long pay_time;
+    public int refund_type;//退款方式 1微信 2支付宝
+    public long refund_time;
 
     public Goods() {
     }
