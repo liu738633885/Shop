@@ -68,6 +68,7 @@ public class Constants {
     public static final String ADD_FEEDBACK = _USER + "add_feedback";
     public static final String GET_AUCTION_ING = _USER + "get_auction_ing";
     public static final String GET_AUCTION_MARGIN_LIST = _USER + "get_auction_margin_list";
+    public static final String GET_AUCTION_SUCCESS = _USER + "get_auction_success";
     /**
      * ====GOODS========
      */
@@ -106,6 +107,7 @@ public class Constants {
     public static final String GET_AUCTION_THEME_LIST = _AUCTION + "get_theme_list";
     public static final String GET_AUCTION_CATEGORY_GOODS = _AUCTION + "get_category_goods";
     public static final String GET_AUCTION_GOODS_CATEGORY_LIST = _AUCTION + "get_goods_category_list";
+    public static final String AUCTION_ORDER_TASK_DELIVERY = _AUCTION + "auctionOrderTakeDelivery";
     /**
      * ====Buy========
      */

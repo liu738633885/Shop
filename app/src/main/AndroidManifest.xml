@@ -352,6 +352,8 @@
         </activity>
         <activity android:name=".auction.AuctionMarginListActivity">
         </activity>
+        <activity android:name=".auction.AuctionSuccessActivity">
+        </activity>
     </application>
 
 </manifest>

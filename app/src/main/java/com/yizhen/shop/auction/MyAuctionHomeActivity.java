@@ -26,7 +26,7 @@ public class MyAuctionHomeActivity extends BaseActivity {
 
     //我的获拍
     public void get_auction_success(View v) {
-
+        startActivity(new Intent(bContext, AuctionSuccessActivity.class));
     }
 
     //我的保证金

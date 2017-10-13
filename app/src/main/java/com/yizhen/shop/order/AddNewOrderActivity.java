@@ -316,6 +316,11 @@ public class AddNewOrderActivity extends BaseActivity {
         }
         request.add("pay_type", 1);
         request.add("is_invoice", is_invoice);
+        if (mode == 1) {
+            request.add("buy_type", "cart_buy");
+        } else if (mode == 2) {
+            request.add("buy_type", "now_buy");
+        }
         CallServer.getRequestInstance().add(this, 0x01, request, new HttpListenerCallback() {
             @Override
             public void onSucceed(int what, NetBaseBean netBaseBean) {

@@ -83,7 +83,7 @@
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@id/imv"
             android:textColor="@color/gray02"
-            android:textSize="13sp"/>
+            android:textSize="15sp"/>
     </RelativeLayout>
 
     <View

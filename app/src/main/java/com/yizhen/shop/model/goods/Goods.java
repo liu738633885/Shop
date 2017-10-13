@@ -70,6 +70,7 @@ public class Goods implements Serializable {
     public long pay_time;
     public int refund_type;//退款方式 1微信 2支付宝
     public long refund_time;
+    public int order_id;
 
     public Goods() {
     }
