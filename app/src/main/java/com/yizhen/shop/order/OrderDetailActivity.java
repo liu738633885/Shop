@@ -177,7 +177,7 @@ public class OrderDetailActivity extends BaseActivity {
         pay_money.setText("¥ " + order.pay_money);
         tv_point.setText("获得" + order.give_point + "积分");
         String info = "";
-        info += "订单编号: " + order.out_trade_no + "\n";
+        info += "订单编号: " + order.order_no + "\n";
         info += "支付方式: " + order.payment_type_name + "\n";
         try {
             info += "下单时间: " + DateUtils.tenLongToString(order.create_time, DateUtils.yyyyMMddHHmmss);

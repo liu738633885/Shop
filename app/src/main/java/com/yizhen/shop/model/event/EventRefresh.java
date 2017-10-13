@@ -18,6 +18,7 @@ public class EventRefresh {
     public static final String ACTION_CLUB_USER_CHANGE = "club_user_change";
     public static final String PAY_OK = "pay";
     public static final String PAY_BACK = "pay_back";
+    public static final String ADD_ORDER_OK = "add_order_ok";
     private String action;
     private Object data;
     private String where;

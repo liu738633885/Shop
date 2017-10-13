@@ -83,7 +83,7 @@ public class OrderListFragment extends BaseFragment implements LewisSwipeRefresh
                 } else {
                     helper.setText(R.id.tv_price, "¥ " + item.order_money);
                 }
-                helper.setText(R.id.tv_order_num, "订单编号: " + item.out_trade_no);
+                helper.setText(R.id.tv_order_num, "订单编号: " + item.order_no);
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

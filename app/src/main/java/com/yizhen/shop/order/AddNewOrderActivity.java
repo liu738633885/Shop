@@ -38,6 +38,7 @@ import com.yizhen.shop.util.T;
 import com.yizhen.shop.util.imageloader.ImageLoader;
 import com.yizhen.shop.widgets.dialog.BottomDialog;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
@@ -328,6 +329,7 @@ public class AddNewOrderActivity extends BaseActivity {
                     //Logger.e(netBaseBean.getBody());
 //                    OrderListActivity.goTo(bContext, 1);
 //                    finish();
+                    EventBus.getDefault().post(new EventRefresh(EventRefresh.ACTION_LOGIN));
                     Order order = netBaseBean.parseObject(Order.class);
                     if (!TextUtils.isEmpty(order.out_trade_no)) {
                         PayActivity.goTo(bContext, order.out_trade_no);

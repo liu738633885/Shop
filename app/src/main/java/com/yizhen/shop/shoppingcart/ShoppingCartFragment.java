@@ -430,6 +430,8 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
         if (e != null && !TextUtils.isEmpty(e.getAction())) {
             if (e.getAction().equals(EventRefresh.ACTION_LOGIN)) {
                 onRefresh();
+            } else if (e.getAction().equals(EventRefresh.ADD_ORDER_OK)) {
+                onRefresh();
             } else if (e.getAction().equals(EventRefresh.ACTION_LOGOUT)) {
                 adapter.setNewData(new ArrayList<Cart>());
                 updateLoginUI();

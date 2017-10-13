@@ -16,6 +16,7 @@ public class Order implements Serializable {
     public String order_money;
     public String refund_money;
     public String out_trade_no;
+    public String order_no;
     public double discount_money;
     public List<Goods> goods_list;
     public List<Coupon> coupon_list;
