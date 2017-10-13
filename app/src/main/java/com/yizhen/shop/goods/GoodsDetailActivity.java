@@ -41,6 +41,7 @@ import com.yizhen.shop.shoppingcart.ShoppingCartActivity;
 import com.yizhen.shop.user.CollectionListActivity;
 import com.yizhen.shop.user.LoginActivity;
 import com.yizhen.shop.util.DateUtils;
+import com.yizhen.shop.util.ShareUtils;
 import com.yizhen.shop.util.T;
 import com.yizhen.shop.util.imageloader.ImageLoader;
 import com.yizhen.shop.util.manager.UserManager;
@@ -91,6 +92,12 @@ public class GoodsDetailActivity extends BaseActivity {
 
     @Override
     protected void initView(Bundle savedInstanceState) {
+        findViewById(R.id.share).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShareUtils.ShareWX(bContext, Constants.GOODS_DETAIL_WEB + goods_id, "菩提伽耶", "菩提伽耶商品", "", ShareUtils.SHARE_TO_SESSION);
+            }
+        });
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setTabMode(TabLayout.GRAVITY_CENTER);
         for (String s : tabStrs) {

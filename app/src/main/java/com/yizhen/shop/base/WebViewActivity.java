@@ -21,6 +21,7 @@ import android.webkit.WebViewClient;
 
 import com.orhanobut.logger.Logger;
 import com.yizhen.shop.R;
+import com.yizhen.shop.goods.GoodsDetailActivity;
 import com.yizhen.shop.model.event.EventRefresh;
 import com.yizhen.shop.order.PayActivity;
 import com.yizhen.shop.util.manager.UserManager;
@@ -327,6 +328,16 @@ public class WebViewActivity extends BaseActivity {
                     //mWebView.loadUrl("javascript:wave()");
                     //Toast("order_no:" + pay_sn);
                     PayActivity.goTo(bContext, pay_sn, 1);
+                }
+            });
+        }
+
+        @JavascriptInterface
+        public void gotoGoodsDetail(final int id) {
+            mHandler.post(new Runnable() {
+                public void run() {
+                    //mWebView.loadUrl("javascript:wave()");
+                    GoodsDetailActivity.goTo(bContext, id);
                 }
             });
         }
