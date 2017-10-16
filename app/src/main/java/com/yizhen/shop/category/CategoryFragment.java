@@ -1,5 +1,6 @@
 package com.yizhen.shop.category;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
@@ -16,6 +17,7 @@ import com.orhanobut.logger.Logger;
 import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseFragment;
+import com.yizhen.shop.goods.SearchActivity;
 import com.yizhen.shop.model.category.Category;
 import com.yizhen.shop.model.netmodel.NetBaseBean;
 import com.yizhen.shop.net.CallServer;
@@ -54,6 +56,12 @@ public class CategoryFragment extends BaseFragment {
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         StatusBarUtil.setPaddingSmart(getActivity(), view);
+        view.findViewById(R.id.query).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SearchActivity.class));
+            }
+        });
         tabLayout = view.findViewById(R.id.tabLayout);
 
         tabLayout.addOnTabSelectedListener(new VerticalTabLayout.OnTabSelectedListener() {

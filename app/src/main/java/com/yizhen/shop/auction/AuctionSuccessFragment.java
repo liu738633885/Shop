@@ -61,6 +61,7 @@ public class AuctionSuccessFragment extends BaseFragment implements LewisSwipeRe
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         initAdapter();
         rv.setAdapter(adapter);
+        adapter.setEmptyView(R.layout.empty_view,rv);
     }
 
     private void initAdapter() {

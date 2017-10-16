@@ -71,6 +71,8 @@ public class Goods implements Serializable {
     public int refund_type;//退款方式 1微信 2支付宝
     public long refund_time;
     public int order_id;
+    public int margin_is_refund;//释放状态 保证金是否释放 0否 1是
+    public String margin_refund_msg;//释放状态文字描述
 
     public Goods() {
     }

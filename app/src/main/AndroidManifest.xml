@@ -354,6 +354,8 @@
         </activity>
         <activity android:name=".auction.AuctionSuccessActivity">
         </activity>
+        <activity android:name=".auction.SearchAuctionActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -108,6 +108,7 @@ public class Constants {
     public static final String GET_AUCTION_CATEGORY_GOODS = _AUCTION + "get_category_goods";
     public static final String GET_AUCTION_GOODS_CATEGORY_LIST = _AUCTION + "get_goods_category_list";
     public static final String AUCTION_ORDER_TASK_DELIVERY = _AUCTION + "auctionOrderTakeDelivery";
+    public static final String AUCTION_GET_SEARCH_GOODS = _AUCTION + "get_search_goods";
     /**
      * ====Buy========
      */

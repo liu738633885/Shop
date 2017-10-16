@@ -86,6 +86,12 @@ public class AuctionMarginListActivity extends BaseActivity implements LewisSwip
                 } else {
                     helper.setText(R.id.tv_pay_state, "支付方式: ");
                 }
+                if(item.margin_is_refund==0){
+                    helper.setText(R.id.tv_state2,"未释放");
+                }else if(item.margin_is_refund==1){
+                    helper.setText(R.id.tv_state2,"已释放");
+                }
+                helper.setText(R.id.tv_state1,item.margin_refund_msg);
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -56,6 +56,12 @@ public class AuctionHomeFragment extends BaseFragment implements LewisSwipeRefre
     @Override
     protected void initView(View view, Bundle savedInstanceState) {
         StatusBarUtil.setPaddingSmart(getActivity(), view);
+        view.findViewById(R.id.search).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), SearchAuctionActivity.class));
+            }
+        });
         swl = view.findViewById(R.id.swl);
         swl.setOnRefreshListener(this);
         rv = view.findViewById(R.id.rv);
