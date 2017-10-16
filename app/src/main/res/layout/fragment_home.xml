@@ -57,7 +57,6 @@
             android:padding="5dp">
 
             <ImageView
-                android:visibility="invisible"
                 android:id="@+id/messages_ic"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
@@ -65,6 +64,7 @@
                 android:src="@mipmap/home_messages_ic"/>
 
             <View
+                android:visibility="invisible"
                 android:id="@+id/message_point"
                 android:layout_width="7dp"
                 android:layout_height="7dp"
