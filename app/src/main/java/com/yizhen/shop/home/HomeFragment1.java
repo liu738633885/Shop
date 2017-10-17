@@ -109,6 +109,14 @@ public class HomeFragment1 extends BaseFragment implements LewisSwipeRefreshLayo
                         goods.type = Home.TYPE_GOODS_KAIGUANG;
                         goodsList.add(goods);
                     }
+                    //goodsList.add(new Goods(Home.TYPE_TITLE, "限时抢购"));
+                    if(home.discount.goods_list.size()>0){
+                        Goods discountGoods = home.discount.goods_list.get(0);
+                        discountGoods.type = Home.TYPE_DISCOUNT;
+                        discountGoods.end_time = home.discount.end_time;
+                        discountGoods.next_time = home.discount.next_time;
+                        goodsList.add(discountGoods);
+                    }
                     goodsList.add(new Goods(Home.TYPE_TITLE, "新品首发"));
                     //goodsList.add(new Goods(Home.TYPE_TITLE_NEW, "新品首发", "http://yanxuan.nosdn.127.net/1677b1e2ffa92161b46f1a59816b560d.jpg?imageView&quality=95&thumbnail=1090x310"));
                     for (Goods goods : home.new_goods_list) {

@@ -30,6 +30,8 @@ public class Constants {
     public static final String ADMIN_ID = "admin";
     public static final String GOODS_DETAIL_WEB = "http://mobile.hnido.com/goods/content.html?goods_id=";
     public static final String AUCTION_DETAIL_WEB = "http://api.putijiaye.com/v1_0.Auction/get_goods_detail?goods_id=";
+    public static final String XIAN_SHI_GOU = "http://m.putijiaye.com/goods/flashsale.html?platform=app";
+    public static final String GOODS_DETAIL_SHARE_WEB = "http://m.putijiaye.com/goods/detail.html?id=";
 
     /**
      * ====login=======

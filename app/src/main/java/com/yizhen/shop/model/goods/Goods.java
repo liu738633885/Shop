@@ -73,6 +73,9 @@ public class Goods implements Serializable {
     public int order_id;
     public int margin_is_refund;//释放状态 保证金是否释放 0否 1是
     public String margin_refund_msg;//释放状态文字描述
+    //限时购
+    public long end_time;
+    public long next_time;
 
     public Goods() {
     }

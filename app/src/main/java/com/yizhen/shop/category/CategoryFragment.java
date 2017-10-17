@@ -162,11 +162,30 @@ public class CategoryFragment extends BaseFragment {
                     if (list != null) {
                         //showList = new ArrayList<Category>();
                         map = new LinkedHashMap<Integer, Category>();
-                        for (Category category : list) {
+                       /* for (Category category : list) {
                             if (category.level == 1) {
                                 map.put(category.category_id, category);
                             } else {
                                 map.get(category.pid).childs.add(category);
+                            }
+                            Logger.e(map.toString());
+                        }*/
+                        for (Category category : list) {
+                            if (category.level == 1) {
+                                if (map.get(category.category_id) != null && map.get(category.category_id).childs != null && map.get(category.category_id).childs.size() > 0) {
+                                    category.childs.addAll(map.get(category.category_id).childs);
+                                }
+                                map.put(category.category_id, category);
+                            } else {
+                                try {
+                                    if (map.get(category.pid) == null) {
+                                        map.put(category.pid, new Category());
+                                    }
+                                    map.get(category.pid).childs.add(category);
+                                } catch (Exception e) {
+
+                                    e.printStackTrace();
+                                }
                             }
                             Logger.e(map.toString());
                         }

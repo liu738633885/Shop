@@ -95,7 +95,7 @@ public class GoodsDetailActivity extends BaseActivity {
         findViewById(R.id.share).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ShareUtils.ShareWX(bContext, Constants.GOODS_DETAIL_WEB + goods_id, "菩提伽耶", "菩提伽耶商品", "", ShareUtils.SHARE_TO_SESSION);
+                ShareUtils.ShareWX(bContext, Constants.GOODS_DETAIL_SHARE_WEB + goods_id, "菩提伽耶", "菩提伽耶商品", "", ShareUtils.SHARE_TO_SESSION);
             }
         });
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);

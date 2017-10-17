@@ -11,6 +11,7 @@ import android.view.View;
 import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseFragment;
+import com.yizhen.shop.base.WebViewFragment;
 import com.yizhen.shop.category.CategoryGoodsFragment;
 import com.yizhen.shop.goods.GoodsListFragment;
 import com.yizhen.shop.goods.SearchActivity;
@@ -51,12 +52,14 @@ public class HomeFragment extends BaseFragment {
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabStrs = new ArrayList<>();
         tabStrs.add("推荐");
+        tabStrs.add("限时购");
         tabStrs.add("精品推荐");
         tabStrs.add("新品首发");
         for (String s : tabStrs) {
             tabLayout.addTab(tabLayout.newTab().setText(s));
         }
         list_fragment.add(new HomeFragment1());
+        list_fragment.add(WebViewFragment.newInstance(Constants.XIAN_SHI_GOU));
         list_fragment.add(GoodsListFragment.newInstance(Constants.GET_OPENING_GOODS));
         list_fragment.add(GoodsListFragment.newInstance(Constants.GET_NEW_GOODS));
 

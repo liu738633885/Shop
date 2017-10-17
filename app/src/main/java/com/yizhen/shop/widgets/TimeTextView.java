@@ -23,7 +23,7 @@ public class TimeTextView extends TextView {
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
         // 在控件被销毁时移除消息
-        handler.removeMessages(0);
+        //handler.removeMessages(0);
         handler.removeMessages(1);
     }
 

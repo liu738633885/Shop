@@ -34,6 +34,8 @@ import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.TabView;
 
+import static com.alipay.sdk.app.statistic.c.A;
+
 public class AuctionCateActivity extends BaseActivity {
     private VerticalTabLayout tabLayout;
     private RecyclerView rv;
@@ -80,7 +82,8 @@ public class AuctionCateActivity extends BaseActivity {
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        CategoryGoodsActivity.goTo(bContext, item.category_id, item.category_name);
+                        //CategoryGoodsActivity.goTo(bContext, item.category_id, item.category_name);
+                        AuctionListActivity.goTo(bContext,item.category_name,item.category_id,0);
                     }
                 });
             }
@@ -94,7 +97,8 @@ public class AuctionCateActivity extends BaseActivity {
         imv_banner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CategoryGoodsActivity.goTo(bContext, category.category_id, category.category_name);
+                //CategoryGoodsActivity.goTo(bContext, category.category_id, category.category_name);
+                AuctionListActivity.goTo(bContext,category.category_name,category.category_id,0);
             }
         });
 
