@@ -86,7 +86,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
 
     private void setBtnLogin() {
-        if (edt_username.getText().length() > 0 && edt_password.getText().length() >= 8 && edt_password.getText().length() <= 20) {
+        if (edt_username.getText().length() > 0 && edt_password.getText().length() >= 6 && edt_password.getText().length() <= 20) {
             btn_login.setEnabled(true);
         } else {
             btn_login.setEnabled(false);
@@ -137,8 +137,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             T.showShort(this, "密码不能为空!");
             return;
         }
-        if (edt_username.getText().length() < 8 || edt_username.getText().length() > 20) {
-            T.showShort(this, "密码长度必须为8~20之间!");
+        if (edt_password.getText().length() < 6 || edt_password.getText().length() > 20) {
+            T.showShort(this, "密码长度必须为6~20之间!");
             return;
         }
         NetBaseRequest loginRequest = new NetBaseRequest(Constants.LOGIN);

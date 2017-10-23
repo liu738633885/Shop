@@ -46,8 +46,8 @@ public class EditPasswordActivity extends BaseActivity {
             Toast(" 请先输入旧密码");
             return;
         }
-        if (edt_new_password.getText().toString().length() < 8) {
-            Toast("新密码最少8位");
+        if (edt_new_password.getText().toString().length() < 6) {
+            Toast("新密码最少6位");
             return;
         }
 
