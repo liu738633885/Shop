@@ -118,7 +118,9 @@ public class ImageLoader {
             if (TextUtils.isEmpty(url)) {
                 return;
             }
-            getBuilder(context, url, false, 1, 0, 0, -1, 0).transform(new GlideRoundTransform2(context, 3, 3, 0, 0)).into(imv);
+            //getBuilder(context, url, false, 1, 0, 0, -1, 0).transform(new GlideRoundTransform2(context, 30, 30, 0, 0)).into(imv);
+            RoundCornersTransformation2 transformation=new RoundCornersTransformation2(context,DensityUtil.dip2px(context,2),RoundCornersTransformation2.CornerType.TOP);
+            Glide.with(context).load(getUrl(url)).bitmapTransform(transformation).into(imv);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +17,6 @@ import com.orhanobut.logger.Logger;
 import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseActivity;
-import com.yizhen.shop.category.CategoryGoodsActivity;
 import com.yizhen.shop.model.category.Category;
 import com.yizhen.shop.model.netmodel.NetBaseBean;
 import com.yizhen.shop.net.CallServer;
@@ -33,8 +33,6 @@ import java.util.Map;
 import q.rorbin.verticaltablayout.VerticalTabLayout;
 import q.rorbin.verticaltablayout.adapter.TabAdapter;
 import q.rorbin.verticaltablayout.widget.TabView;
-
-import static com.alipay.sdk.app.statistic.c.A;
 
 public class AuctionCateActivity extends BaseActivity {
     private VerticalTabLayout tabLayout;
@@ -93,6 +91,11 @@ public class AuctionCateActivity extends BaseActivity {
     private void updateRightUI(final Category category) {
         adapter.setNewData(category.childs);
         tv_name.setText(category.category_name);
+        if (TextUtils.isEmpty(category.category_pic)) {
+            imv_banner.setVisibility(View.GONE);
+        } else {
+            imv_banner.setVisibility(View.VISIBLE);
+        }
         ImageLoader.loadAutoHeight(bContext, category.category_pic, imv_banner, 3);
         imv_banner.setOnClickListener(new View.OnClickListener() {
             @Override

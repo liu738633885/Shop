@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,6 +106,11 @@ public class CategoryFragment extends BaseFragment {
     private void updateRightUI(final Category category) {
         adapter.setNewData(category.childs);
         tv_name.setText(category.category_name);
+        if(TextUtils.isEmpty(category.category_pic)){
+            imv_banner.setVisibility(View.GONE);
+        }else {
+            imv_banner.setVisibility(View.VISIBLE);
+        }
         ImageLoader.loadAutoHeight(getActivity(), category.category_pic, imv_banner, 3);
         imv_banner.setOnClickListener(new View.OnClickListener() {
             @Override
