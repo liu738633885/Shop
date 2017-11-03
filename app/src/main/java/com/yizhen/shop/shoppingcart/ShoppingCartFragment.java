@@ -49,6 +49,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.yizhen.shop.R.id.tv;
+
 /**
  * Created by lewis on 2017/7/14.
  */
@@ -156,6 +158,10 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
                 }
             }
         });
+        //onRefresh();
+    }
+    public void onResume(){
+        super.onResume();
         onRefresh();
     }
 
@@ -235,7 +241,7 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
                 helper.setText(R.id.tv_title, item.goods_name);
                 helper.setText(R.id.tv_price, "¥ " + item.promotion_price);
                 ImageLoader.loadHome(mContext, item.pic_cover_mid, (ImageView) helper.getView(R.id.imv));
-                helper.setText(R.id.tv_desc, item.keywords);
+                helper.setText(R.id.tv_desc, item.introduction);
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -281,7 +287,12 @@ public class ShoppingCartFragment extends BaseFragment implements LewisSwipeRefr
             tv_edit.setVisibility(View.VISIBLE);
         } else {
             ll_bottom_bar.setVisibility(View.GONE);
-            tv_edit.setVisibility(View.INVISIBLE);
+            //当购物车没有数据时,隐藏按钮
+            if(isEdit){
+                tv_edit.setVisibility(View.VISIBLE);
+            }else {
+                tv_edit.setVisibility(View.INVISIBLE);
+            }
         }
         //处理细节
         //初始化数据

@@ -143,7 +143,7 @@ public class SearchActivity extends BaseActivity implements LewisSwipeRefreshLay
                 helper.setText(R.id.tv_title, item.goods_name);
                 helper.setText(R.id.tv_price, "¥ " + item.promotion_price);
                 ImageLoader.loadHome(mContext, item.pic_cover_big, (ImageView) helper.getView(R.id.imv));
-                helper.setText(R.id.tv_desc, item.keywords);
+                helper.setText(R.id.tv_desc, item.introduction);
                 helper.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
