@@ -134,7 +134,9 @@ public class TopicFragment extends BaseFragment implements LewisSwipeRefreshLayo
             public void onSucceed(int what, NetBaseBean netBaseBean) {
                 if (netBaseBean.isSuccess()) {
                     Topic topic = netBaseBean.parseObject(Topic.class);
-                    ImageLoader.loadAutoHeight(getActivity(), topic.topicInfo.image, headView, 0);
+                    if(topic.topicInfo!=null){
+                        ImageLoader.loadAutoHeight(getActivity(), topic.topicInfo.image, headView, 0);
+                    }
                     if (topic.list == null || topic.list.size() < 1) {
                         topic.list = new ArrayList<Goods>();
                     }

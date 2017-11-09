@@ -1,6 +1,7 @@
 package com.yizhen.shop.home;
 
 import android.graphics.Paint;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -56,7 +57,13 @@ public class HomeBeanAdapter extends BaseQuickAdapter<Goods, BaseViewHolder> {
             helper.setText(R.id.tv, item.title);
             helper.setText(R.id.tv1, item.tv1);
             helper.setText(R.id.tv2, item.tv2);
-            ImageLoader.loadAutoHeight(mContext, item.title_img, (ImageView) helper.getView(R.id.imv), 0);
+            ImageView imv = helper.getView(R.id.imv);
+            if (TextUtils.isEmpty(item.title_img)) {
+                ((View) imv.getParent()).setVisibility(View.GONE);
+            } else {
+                ((View) imv.getParent()).setVisibility(View.VISIBLE);
+                ImageLoader.loadAutoHeight(mContext, item.title_img, imv, 0);
+            }
             helper.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

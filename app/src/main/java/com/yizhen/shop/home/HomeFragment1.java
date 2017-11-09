@@ -124,11 +124,22 @@ public class HomeFragment1 extends BaseFragment implements LewisSwipeRefreshLayo
                         goodsList.add(goods);
                     }
                     //goodsList.add(new Goods(Home.TYPE_TITLE_SPECIAL, "佛堂必备", "https://img.alicdn.com/imgextra/i2/408148187/TB2V_qMcXXXXXaRXXXXXXXXXXXX_!!408148187.jpg"));
-                    if (home.special_list != null && home.special_list.goods_list != null && home.special_list.goods_list.size() > 0) {
+                    if (home.special_list != null ) {
                         Goods goodsFo = new Goods(Home.TYPE_TITLE_SPECIAL, "佛堂必备", home.special_list.image, home.special_list.topic_id);
                         goodsFo.tv1 = home.special_list.title;
                         goodsFo.tv2 = home.special_list.describe;
                         goodsList.add(goodsFo);
+                    } else {
+                        goodsList.add(new Goods(Home.TYPE_TITLE, "佛堂必备"));
+                    }
+                  /*  else {
+                        if (home.special_list == null || home.special_list.topic_id == 0) {
+                            goodsList.add(new Goods(Home.TYPE_TITLE, "佛堂必备"));
+                        }else {
+                            goodsList.add(new Goods(Home.TYPE_TITLE_SPECIAL, "佛堂必备", "",home.special_list.topic_id ));
+                        }
+                    }*/
+                    if (home.special_list.goods_list != null && home.special_list.goods_list.size() > 0) {
                         for (Goods goods : home.special_list.goods_list) {
                             goods.type = Home.TYPE_GOODS_NEW;
                             goodsList.add(goods);
