@@ -1,5 +1,7 @@
 package com.yizhen.shop.model.category;
 
+import com.yizhen.shop.model.home.Adv;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,4 +23,5 @@ public class Category {
     public String description;
     public String category_pic;
     public List<Category> childs = new ArrayList<>();
+    public Adv adv_info;
 }

@@ -134,10 +134,15 @@ public class RefundDetailActivity extends BaseActivity implements LewisSwipeRefr
         CallServer.getRequestInstance().add(bContext, 0x01, request, new HttpListenerCallback() {
             @Override
             public void onSucceed(int what, NetBaseBean netBaseBean) {
-                RefundList refundList = netBaseBean.parseObject(RefundList.class);
-                List<Refund> list = refundList.list;
-                adapter.setNewData(list);
-                rv.smoothScrollToPosition(adapter.getData().size() - 1);
+                if(netBaseBean.isSuccess()){
+                    RefundList refundList = netBaseBean.parseObject(RefundList.class);
+                    List<Refund> list = refundList.list;
+                    if (list.size()>0){
+                        adapter.setNewData(list);
+                        rv.smoothScrollToPosition(adapter.getData().size() - 1);
+                    }
+                }
+
             }
 
             @Override

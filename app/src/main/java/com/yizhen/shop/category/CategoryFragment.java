@@ -18,8 +18,11 @@ import com.orhanobut.logger.Logger;
 import com.yizhen.shop.Constants;
 import com.yizhen.shop.R;
 import com.yizhen.shop.base.BaseFragment;
+import com.yizhen.shop.base.WebViewActivity;
+import com.yizhen.shop.goods.GoodsDetailActivity;
 import com.yizhen.shop.goods.SearchActivity;
 import com.yizhen.shop.model.category.Category;
+import com.yizhen.shop.model.home.Adv;
 import com.yizhen.shop.model.netmodel.NetBaseBean;
 import com.yizhen.shop.net.CallServer;
 import com.yizhen.shop.net.HttpListenerCallback;
@@ -106,16 +109,30 @@ public class CategoryFragment extends BaseFragment {
     private void updateRightUI(final Category category) {
         adapter.setNewData(category.childs);
         tv_name.setText(category.category_name);
-        if(TextUtils.isEmpty(category.category_pic)){
-            imv_banner.setVisibility(View.GONE);
-        }else {
+        if (category.adv_info != null && !TextUtils.isEmpty(category.adv_info.adv_image)) {
             imv_banner.setVisibility(View.VISIBLE);
+            ImageLoader.loadAutoHeight(getActivity(), category.adv_info.adv_image, imv_banner, 3);
+        } else {
+            imv_banner.setVisibility(View.GONE);
         }
-        ImageLoader.loadAutoHeight(getActivity(), category.category_pic, imv_banner, 3);
         imv_banner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CategoryGoodsActivity.goTo(getActivity(), category.category_id, category.category_name);
+                Adv adv = category.adv_info;
+                try {
+                    if (adv.adv_url_type == 1 && !TextUtils.isEmpty(adv.adv_url)) {
+                        WebViewActivity.goTo(getActivity(), adv.adv_url, adv.adv_title);
+                    } else if (adv.adv_url_type == 2) {
+
+                        GoodsDetailActivity.goTo(getActivity(), Integer.parseInt(adv.adv_url));
+
+                    } else if (adv.adv_url_type == 3) {
+                        CategoryGoodsActivity.goTo(getActivity(), Integer.parseInt(adv.adv_url), "");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                //CategoryGoodsActivity.goTo(getActivity(), category.category_id, category.category_name);
             }
         });
 

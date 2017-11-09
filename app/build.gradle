@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.yizhen.shop"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 17110302
-        versionName "1.0.5"
+        versionCode 17110901
+        versionName "1.0.7"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         ndk {
@@ -83,9 +83,9 @@ dependencies {
     //compile 'me.yokeyword:indexablerecyclerview:1.2.3'
     compile files('libs/org.apache.http.legacy.jar')
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.android.support:design:26.0.0-alpha1'
+    compile 'com.android.support:design:26.+'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.orhanobut:logger:1.15'
     compile 'com.pgyersdk:sdk:2.5.6'
     compile 'com.google.code.gson:gson:2.7'

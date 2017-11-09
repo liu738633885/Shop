@@ -64,7 +64,7 @@ public class LoadingDialog extends Dialog {
      }*/
     @Override
     public void show() {
-        if (this == null || isShowing()) {
+        if (isShowing()) {
             return;
         }
         super.show();
@@ -72,7 +72,7 @@ public class LoadingDialog extends Dialog {
 
     @Override
     public void dismiss() {
-        if (this == null || !isShowing()) {
+        if (!isShowing()) {
             return;
         }
         super.dismiss();

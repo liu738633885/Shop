@@ -8,6 +8,8 @@
         android:id="@+id/imv_banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
         android:layout_margin="15dp"
         />
 

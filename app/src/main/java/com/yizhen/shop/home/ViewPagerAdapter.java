@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import com.jude.rollviewpager.RollPagerView;
 import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.yizhen.shop.base.WebViewActivity;
+import com.yizhen.shop.category.CategoryGoodsActivity;
+import com.yizhen.shop.goods.GoodsDetailActivity;
 import com.yizhen.shop.model.home.Adv;
 import com.yizhen.shop.util.imageloader.ImageLoader;
 
@@ -43,8 +45,19 @@ public class ViewPagerAdapter extends LoopPagerAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!TextUtils.isEmpty(data.get(position).adv_url)) {
-                    WebViewActivity.goTo(mContext, data.get(position).adv_url, data.get(position).adv_title);
+                Adv adv = data.get(position);
+                try {
+                    if (adv.adv_url_type == 1 && !TextUtils.isEmpty(adv.adv_url)) {
+                        WebViewActivity.goTo(mContext,adv.adv_url, adv.adv_title);
+                    } else if (adv.adv_url_type == 2) {
+
+                        GoodsDetailActivity.goTo(mContext, Integer.parseInt(adv.adv_url));
+
+                    } else if (adv.adv_url_type == 3) {
+                        CategoryGoodsActivity.goTo(mContext, Integer.parseInt(adv.adv_url), "");
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });

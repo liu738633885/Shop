@@ -13,4 +13,5 @@ public class Adv {
     public int slide_sort;
     public int click_num;
     public String background;
+    public int adv_url_type; //1为外部链接，2为商品id，3分类id
 }
